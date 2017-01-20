@@ -1,5 +1,6 @@
 package com.myapp.mehrnaz.appapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -63,13 +64,13 @@ public class MainActivity extends AppCompatActivity {
         txtplusbg.setTypeface(font);
         txtsq2bg = (TextView) findViewById(R.id.txtsquare2bg);
         txtsq2bg.setTypeface(font);
-        txticonmenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent intent = new Intent(MainActivity.this, Menu.class);
-                // startActivity(intent);
-            }
-        });
+//        txticonmenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                 Intent intent = new Intent(MainActivity.this, Level.class);
+//                 startActivity(intent);
+//            }
+//        });
         txticonsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

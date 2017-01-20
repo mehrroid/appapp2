@@ -6,18 +6,26 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Mehrnaz on 1/17/2017.
  */
 
 public class Menu extends Activity {
+    public int [][] items;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
-        LinearLayout container = (LinearLayout) findViewById(R.id.activity_main);
+       // LinearLayout container = (LinearLayout) findViewById(R.id.LinearLayout01);
+
+      //TableLayout tb = (TableLayout) findViewById(R.id.TableLayout03);
 
         View.OnClickListener clickListener= new View.OnClickListener() {
             @Override
@@ -45,12 +53,15 @@ public class Menu extends Activity {
         //addad 6 o 8 nbyad sabet bashn va byd motaghr bashn
         //bjay ll tablelayout bashe
         for (int i = 1; i <= 8; i++) {
-            LinearLayout ll = new LinearLayout(Menu.this);
-            LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            ll.setWeightSum(6);
-            ll.setOrientation(LinearLayout.HORIZONTAL);
-            ll.setLayoutParams(llParams);
-            container.addView(ll);
+           // LinearLayout ll = new LinearLayout(Menu.this);
+            TableLayout tableLayout=new TableLayout(Menu.this);
+            //LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            TableLayout.LayoutParams llParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
+
+            tableLayout.setWeightSum(6);
+            tableLayout.setOrientation(LinearLayout.HORIZONTAL);
+            tableLayout.setLayoutParams(llParams);
+            //container.addView(tableLayout);
             for (int j = 1; j <= 6; j++) {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
                 params.setMargins(5,5,5,5);
@@ -66,7 +77,7 @@ public class Menu extends Activity {
                 tv.setLayoutParams(params);
                 tv.setTag(i + "" + j);
                 tv.setBackgroundResource(R.color.colorCloud);
-                ll.addView(tv);
+                tableLayout.addView(tv);
                 tv.setOnClickListener(clickListener);
             }
 

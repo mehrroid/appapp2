@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".test"/>
+        <activity android:name=".Level"/>
     </application>
 
 </manifest>
