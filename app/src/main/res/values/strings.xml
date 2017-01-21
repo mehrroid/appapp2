@@ -1,14 +1,14 @@
 <resources>
     <string-array name="type">
-        <item>testt</item>
-        <item>sss</item>
-        <item>test</item>
-        <item>test4</item>
-        <item>test5</item>
-        <item>test6</item>
-        <item>test7</item>
-        <item>test8</item>
-        <item>test9</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item></item>
     </string-array>
     <string name="app_name">gameApp</string>
     <string name="icon_heart">&#xf1ee;</string>
