@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 //        txticonmenu.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                 Intent intent = new Intent(MainActivity.this, Level.class);
+//                 Intent intent = new Intent(MainActivity.this, Lev.class);
 //                 startActivity(intent);
 //            }
 //        });

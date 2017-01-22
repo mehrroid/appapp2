@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".test"/>
-        <activity android:name=".Level"/>
         <activity android:name=".Lev"/>
+        <activity android:name=".Game"/>
     </application>
 
 </manifest>

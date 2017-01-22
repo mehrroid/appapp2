@@ -1,5 +1,4 @@
 package com.myapp.mehrnaz.appapp;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -20,15 +19,12 @@ public class Lev extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
         container = (android.widget.LinearLayout) findViewById(R.id.activity_main);
-        draw(getResources().getStringArray(R.array.type),3);
+        draw(getResources().getStringArray(R.array.type), 3);
 
-        //addad 6 o 8 nbyad sabet bashn va byd motaghr bashn
-        //bjay ll tablelayout bashe
 
     }
 
     private void draw(String[] strs, int column) {
-
 
         int row = strs.length / column;
         int index = 0;
@@ -46,7 +42,6 @@ public class Lev extends Activity {
                 params.weight = 1;
                 TextView tv = new TextView(Lev.this);
                 Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
-                //r.string bayad motagheyr bashe na sabet
                 tv.setText(strs[index]);
                 tv.setTypeface(font);
                 tv.setTextSize(40);
@@ -59,34 +54,66 @@ public class Lev extends Activity {
                 tv.setOnClickListener(clickListener);
                 index++;
             }
-
         }
     }
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             switch (v.getTag().toString()) {
-                case "11":
-//                       TextView tv = new TextView(Menu.this);
-                    //       tv.setBackgroundResource(R.color.colorIcons);
-                    Intent intent = new Intent(Lev.this, test.class);
+                case "00":
+                    Intent intent = new Intent(Lev.this, Game.class);
+
+                    intent.putExtra("item1", getString(R.string.icon_plus));
                     startActivity(intent);
                     break;
                 case "01":
+                    Intent intent2 = new Intent(Lev.this, Game.class);
+                    intent2.putExtra("item1", getString(R.string.icon_cloud));
+                    startActivity(intent2);
                     break;
                 case "02":
+                    Intent intent3 = new Intent(Lev.this, Game.class);
+                    intent3.putExtra("item1", getString(R.string.icon_setting));
+                    startActivity(intent3);
                     break;
                 case "03":
+                    Intent intent4 = new Intent(Lev.this, Game.class);
+                    intent4.putExtra("item1", getString(R.string.icon_feed));
+                    startActivity(intent4);
                     break;
-                case "04":
+                case "10":
+                    Intent intent5 = new Intent(Lev.this, Game.class);
+                    intent5.putExtra("item1", getString(R.string.icon_cloud));
+                    startActivity(intent5);
                     break;
-                case "05":
+                case "11":
+                    Intent intent6 = new Intent(Lev.this, Game.class);
+                    intent6.putExtra("item1", getString(R.string.icon_cloud));
+                    startActivity(intent6);
+                    break;
+                case "12":
+                    Intent intent7 = new Intent(Lev.this, Game.class);
+                    intent7.putExtra("item1", getString(R.string.icon_cloud));
+                    startActivity(intent7);
+                    break;
+                case "20":
+                    Intent intent8 = new Intent(Lev.this, Game.class);
+                    intent8.putExtra("item1", getString(R.string.icon_cloud));
+                    startActivity(intent8);
+                    break;
+                case "21":
+                    Intent intent9 = new Intent(Lev.this, Game.class);
+                    intent9.putExtra("item1", getString(R.string.icon_cloud));
+                    startActivity(intent9);
+                    break;
+                case "22":
+                    Intent intent10 = new Intent(Lev.this, Game.class);
+                    intent10.putExtra("item1", getString(R.string.icon_cloud));
+                    startActivity(intent10);
                     break;
             }
         }
     };
 }
-
-
-
