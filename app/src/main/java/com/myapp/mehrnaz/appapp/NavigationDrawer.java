@@ -18,102 +18,103 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
+// This is mainpage
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    // Button btn;
     DrawerLayout drawer;
+    Typeface font;
+    //az icon play baraye mosalasha estfade shode
+    TextView txticonplay1;
+    TextView txticonplay2;
+    TextView txticonplay4;
+    TextView txticonsetting;
+    TextView txticonuser;
+    TextView txticonplay;
+    TextView playgamebg;
+    TextView txticonmenu;
+    TextView txticonmenubg;
+    TextView txticonsquare;
+    TextView txticonplus;
+    TextView txtstar;
+    TextView txtstarbg;
+    TextView txtuserplus;
+    TextView txtplusbg;
+    TextView txtsq2;
+    TextView txtsq3;
+    TextView userplusbg;
+    TextView txtsq2bg;
+    TextView txtsq3bg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //etSupportActionBar(toolbar);
-
-        // btn= (Button) findViewById(R.id.btn);
-
-//    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-        //UI
-        Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
-        TextView txt = (TextView) findViewById(R.id.txt);
-        txt.setTypeface(font);
-        TextView txt2 = (TextView) findViewById(R.id.txt2);
-        txt2.setTypeface(font);
-        //TextView txt3 = (TextView) findViewById( R.id.txt3 );
-        //txt3.setTypeface(font);
-        TextView txt4 = (TextView) findViewById(R.id.txt4);
-        txt4.setTypeface(font);
-        TextView txticonsetting = (TextView) findViewById(R.id.txtIconSetting);
+        //UI mainpage
+        //iconplay haman mosalasha hastan
+        font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+        txticonplay1 = (TextView) findViewById(R.id.txticonplay1);
+        txticonplay1.setTypeface(font);
+        txticonplay2 = (TextView) findViewById(R.id.txticonplay2);
+        txticonplay2.setTypeface(font);
+        txticonplay4 = (TextView) findViewById(R.id.iconplay4);
+        txticonplay4.setTypeface(font);
+        txticonsetting = (TextView) findViewById(R.id.txtIconSetting);
         txticonsetting.setTypeface(font);
-        TextView txticonuser = (TextView) findViewById(R.id.txtIconUser);
+        txticonuser = (TextView) findViewById(R.id.txtIconUser);
         txticonuser.setTypeface(font);
-        TextView txticonplay = (TextView) findViewById(R.id.txtIconPlay);
+        txticonplay = (TextView) findViewById(R.id.txtIconPlay);
         txticonplay.setTypeface(font);
-        TextView playgamebg = (TextView) findViewById(R.id.txtIconPlaybg);
+        playgamebg = (TextView) findViewById(R.id.txtIconPlaybg);
         playgamebg.setTypeface(font);
-        TextView txticonmenu = (TextView) findViewById(R.id.txtIconMenu);
+        txticonmenu = (TextView) findViewById(R.id.txtIconMenu);
         txticonmenu.setTypeface(font);
-        TextView txticonmenubg = (TextView) findViewById(R.id.txtIconMenubg);
+        txticonmenubg = (TextView) findViewById(R.id.txtIconMenubg);
         txticonmenubg.setTypeface(font);
-        TextView txticonsquare = (TextView) findViewById(R.id.txtsquare);
+        txticonsquare = (TextView) findViewById(R.id.txtsquare);
         txticonsquare.setTypeface(font);
-        TextView txticonplus = (TextView) findViewById(R.id.txtplus);
+        txticonplus = (TextView) findViewById(R.id.txtplus);
         txticonplus.setTypeface(font);
-        TextView txtstar = (TextView) findViewById(R.id.txtstar);
+        txtstar = (TextView) findViewById(R.id.txtstar);
         txtstar.setTypeface(font);
-        TextView txtstarbg = (TextView) findViewById(R.id.txtstarbg);
+        txtstarbg = (TextView) findViewById(R.id.txtstarbg);
         txtstarbg.setTypeface(font);
-        TextView txtuserplus = (TextView) findViewById(R.id.txtUserPlus);
+        txtuserplus = (TextView) findViewById(R.id.txtUserPlus);
         txtuserplus.setTypeface(font);
-        TextView txtplusbg = (TextView) findViewById(R.id.txtplusbg);
+        txtplusbg = (TextView) findViewById(R.id.txtplusbg);
         txtplusbg.setTypeface(font);
-        TextView txtsq2 = (TextView) findViewById(R.id.txtsquare2);
+        txtsq2 = (TextView) findViewById(R.id.txtsquare2);
         txtsq2.setTypeface(font);
-        TextView txtsq3 = (TextView) findViewById(R.id.txtsquare3);
+        txtsq3 = (TextView) findViewById(R.id.txtsquare3);
         txtsq3.setTypeface(font);
-        TextView userplusbg = (TextView) findViewById(R.id.txtUserPlusbg);
+        userplusbg = (TextView) findViewById(R.id.txtUserPlusbg);
         userplusbg.setTypeface(font);
-        TextView txtsq2bg = (TextView) findViewById(R.id.txtsquare2bg);
+        //sq=square baraye background icon estfade shode
+        txtsq2bg = (TextView) findViewById(R.id.txtsquare2bg);
         txtsq2bg.setTypeface(font);
-        TextView txtsq3bg = (TextView) findViewById(R.id.txtsquare3bg);
+        txtsq3bg = (TextView) findViewById(R.id.txtsquare3bg);
         txtsq3bg.setTypeface(font);
-        //TextView txtgame= (TextView) findViewById( R.id.txtgame);
-//        txtgame.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-
-
+        //Go to Level Activity
         txticonsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Menu.class);
+                Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Lev.class);
                 startActivity(intent);
             }
         });
+        //Go to Level Activity
         txticonuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Lev.class);
+                Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Lev.class);
                 startActivity(intent);
             }
         });
 
-
+//Rotate texviedw iconplay
         RotateAnimation rotate = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.rotateanimation);
-        txt.setAnimation(rotate);
+        txticonplay1.setAnimation(rotate);
         RotateAnimation rotate2 = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.animate2);
-        //
+
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         txticonmenu.setOnClickListener(new View.OnClickListener() {
@@ -124,10 +125,6 @@ public class NavigationDrawer extends AppCompatActivity
             }
         });
 
-        // ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-        // this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        // drawer.setDrawerListener(toggle);
-        // toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -152,12 +149,8 @@ public class NavigationDrawer extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
