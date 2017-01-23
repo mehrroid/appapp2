@@ -24,26 +24,26 @@ public class NavigationDrawer extends AppCompatActivity
     DrawerLayout drawer;
     Typeface font;
     //az icon play baraye mosalasha estfade shode
-    TextView txticonplay1;
-    TextView txticonplay2;
-    TextView txticonplay4;
-    TextView txticonsetting;
-    TextView txticonuser;
-    TextView txticonplay;
-    TextView playgamebg;
-    TextView txticonmenu;
-    TextView txticonmenubg;
-    TextView txticonsquare;
-    TextView txticonplus;
-    TextView txtstar;
-    TextView txtstarbg;
-    TextView txtuserplus;
-    TextView txtplusbg;
-    TextView txtsq2;
-    TextView txtsq3;
-    TextView userplusbg;
-    TextView txtsq2bg;
-    TextView txtsq3bg;
+    TextView txtIconPlay1;
+    TextView txtIconPlay2;
+    TextView txtIconPlay4;
+    TextView txtIconSetting;
+    TextView txtIconUser;
+    TextView txtIconPlay;
+    TextView playGameBg;
+    TextView txtIconMenu;
+    TextView txtIconMenuBg;
+    TextView txtIconSquare;
+    TextView txtIconPlus;
+    TextView txtIconStar;
+    TextView txtStarBg;
+    TextView txtUserPlus;
+    TextView txtPlusBg;
+    TextView txtSq2;
+    TextView txtSq3;
+    TextView userPlusbg;
+    TextView txtSq2Bg;
+    TextView txtSq3Bg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,49 +52,49 @@ public class NavigationDrawer extends AppCompatActivity
         //UI mainpage
         //iconplay haman mosalasha hastan
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
-        txticonplay1 = (TextView) findViewById(R.id.txticonplay1);
-        txticonplay1.setTypeface(font);
-        txticonplay2 = (TextView) findViewById(R.id.txticonplay2);
-        txticonplay2.setTypeface(font);
-        txticonplay4 = (TextView) findViewById(R.id.iconplay4);
-        txticonplay4.setTypeface(font);
-        txticonsetting = (TextView) findViewById(R.id.txtIconSetting);
-        txticonsetting.setTypeface(font);
-        txticonuser = (TextView) findViewById(R.id.txtIconUser);
-        txticonuser.setTypeface(font);
-        txticonplay = (TextView) findViewById(R.id.txtIconPlay);
-        txticonplay.setTypeface(font);
-        playgamebg = (TextView) findViewById(R.id.txtIconPlaybg);
-        playgamebg.setTypeface(font);
-        txticonmenu = (TextView) findViewById(R.id.txtIconMenu);
-        txticonmenu.setTypeface(font);
-        txticonmenubg = (TextView) findViewById(R.id.txtIconMenubg);
-        txticonmenubg.setTypeface(font);
-        txticonsquare = (TextView) findViewById(R.id.txtsquare);
-        txticonsquare.setTypeface(font);
-        txticonplus = (TextView) findViewById(R.id.txtplus);
-        txticonplus.setTypeface(font);
-        txtstar = (TextView) findViewById(R.id.txtstar);
-        txtstar.setTypeface(font);
-        txtstarbg = (TextView) findViewById(R.id.txtstarbg);
-        txtstarbg.setTypeface(font);
-        txtuserplus = (TextView) findViewById(R.id.txtUserPlus);
-        txtuserplus.setTypeface(font);
-        txtplusbg = (TextView) findViewById(R.id.txtplusbg);
-        txtplusbg.setTypeface(font);
-        txtsq2 = (TextView) findViewById(R.id.txtsquare2);
-        txtsq2.setTypeface(font);
-        txtsq3 = (TextView) findViewById(R.id.txtsquare3);
-        txtsq3.setTypeface(font);
-        userplusbg = (TextView) findViewById(R.id.txtUserPlusbg);
-        userplusbg.setTypeface(font);
+        txtIconPlay1 = (TextView) findViewById(R.id.txticonplay1);
+        txtIconPlay1.setTypeface(font);
+        txtIconPlay2 = (TextView) findViewById(R.id.txticonplay2);
+        txtIconPlay2.setTypeface(font);
+        txtIconPlay4 = (TextView) findViewById(R.id.iconplay4);
+        txtIconPlay4.setTypeface(font);
+        txtIconSetting = (TextView) findViewById(R.id.txtIconSetting);
+        txtIconSetting.setTypeface(font);
+        txtIconUser = (TextView) findViewById(R.id.txtIconUser);
+        txtIconUser.setTypeface(font);
+        txtIconPlay = (TextView) findViewById(R.id.txtIconPlay);
+        txtIconPlay.setTypeface(font);
+        playGameBg = (TextView) findViewById(R.id.txtIconPlaybg);
+        playGameBg.setTypeface(font);
+        txtIconMenu = (TextView) findViewById(R.id.txtIconMenu);
+        txtIconMenu.setTypeface(font);
+        txtIconMenuBg = (TextView) findViewById(R.id.txtIconMenubg);
+        txtIconMenuBg.setTypeface(font);
+        txtIconSquare = (TextView) findViewById(R.id.txtsquare);
+        txtIconSquare.setTypeface(font);
+        txtIconPlus = (TextView) findViewById(R.id.txtplus);
+        txtIconPlus.setTypeface(font);
+        txtIconStar = (TextView) findViewById(R.id.txtstar);
+        txtIconStar.setTypeface(font);
+        txtStarBg = (TextView) findViewById(R.id.txtstarbg);
+        txtStarBg.setTypeface(font);
+        txtUserPlus = (TextView) findViewById(R.id.txtUserPlus);
+        txtUserPlus.setTypeface(font);
+        txtPlusBg = (TextView) findViewById(R.id.txtplusbg);
+        txtPlusBg.setTypeface(font);
+        txtSq2 = (TextView) findViewById(R.id.txtsquare2);
+        txtSq2.setTypeface(font);
+        txtSq3 = (TextView) findViewById(R.id.txtsquare3);
+        txtSq3.setTypeface(font);
+        userPlusbg = (TextView) findViewById(R.id.txtUserPlusbg);
+        userPlusbg.setTypeface(font);
         //sq=square baraye background icon estfade shode
-        txtsq2bg = (TextView) findViewById(R.id.txtsquare2bg);
-        txtsq2bg.setTypeface(font);
-        txtsq3bg = (TextView) findViewById(R.id.txtsquare3bg);
-        txtsq3bg.setTypeface(font);
+        txtSq2Bg = (TextView) findViewById(R.id.txtsquare2bg);
+        txtSq2Bg.setTypeface(font);
+        txtSq3Bg = (TextView) findViewById(R.id.txtsquare3bg);
+        txtSq3Bg.setTypeface(font);
         //Go to Level Activity
-        txticonsetting.setOnClickListener(new View.OnClickListener() {
+        txtIconSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Lev.class);
@@ -102,7 +102,7 @@ public class NavigationDrawer extends AppCompatActivity
             }
         });
         //Go to Level Activity
-        txticonuser.setOnClickListener(new View.OnClickListener() {
+        txtIconUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Lev.class);
@@ -112,12 +112,12 @@ public class NavigationDrawer extends AppCompatActivity
 
 //Rotate texviedw iconplay
         RotateAnimation rotate = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.rotateanimation);
-        txticonplay1.setAnimation(rotate);
+        txtIconPlay1.setAnimation(rotate);
         RotateAnimation rotate2 = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.animate2);
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        txticonmenu.setOnClickListener(new View.OnClickListener() {
+        txtIconMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawer.openDrawer(GravityCompat.START);
