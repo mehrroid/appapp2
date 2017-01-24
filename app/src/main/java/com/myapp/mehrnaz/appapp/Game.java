@@ -80,7 +80,6 @@ public class Game extends Activity {
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
         int levelNo = getIntent().getIntExtra("levelNo", 0);
 		Log.i("loadCards()","levelNo=" + levelNo);
-		buttonListener = new ButtonListener();
         mainTable = (TableLayout)findViewById(R.id.TableLayout03);
         context  = mainTable.getContext();
         newGame(levelNo);
@@ -273,7 +272,7 @@ public class Game extends Activity {
 		//	button.setBackgroundDrawable(images.get(cards[x][y]));
 			Log.i("turndCards()", "card["+(x)+
 					"]["+(y)+"]=" + cards[x][y]);
-			Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+			Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
 			button.setTypeface(fontawsome);
 			button.setTextColor(Color.GREEN);
 			String s = Character.toString((char) cards[x][y]);
@@ -350,12 +349,12 @@ public class Game extends Activity {
 
 					seconedCard.button.setTextColor(Color.GRAY);
 					seconedCard.button.setText("\uf04d");
-					seconedCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 100);
+					seconedCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
 
 
 					firstCard.button.setTextColor(Color.GRAY);
 					firstCard.button.setText("\uf04d");
-					firstCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 100);
+					firstCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
     			}
     	    	
     	    	firstCard=null;
