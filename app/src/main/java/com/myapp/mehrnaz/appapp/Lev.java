@@ -82,25 +82,25 @@ public class Lev extends Activity {
                     startActivity(intent);
                     break;
                 case "03":
-                    Intent intent4 = new Intent(Lev.this, Game.class);
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent4.putExtra("item", getString(R.string.icon_feed));
                     intent.putExtra("levelNo", 3);
                     startActivity(intent);
                     break;
                 case "04":
-                    Intent intent4 = new Intent(Lev.this, Game.class);
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent4.putExtra("item", getString(R.string.icon_feed));
                     intent.putExtra("levelNo", 4);
                     startActivity(intent);
                     break;
                 case "05":
-                    Intent intent4 = new Intent(Lev.this, Game.class);
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent4.putExtra("item", getString(R.string.icon_feed));
                     intent.putExtra("levelNo", 5);
                     startActivity(intent);
                     break;
                 case "06":
-                    Intent intent4 = new Intent(Lev.this, Game.class);
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent4.putExtra("item", getString(R.string.icon_feed));
                     intent.putExtra("levelNo", 6);
                     startActivity(intent);
