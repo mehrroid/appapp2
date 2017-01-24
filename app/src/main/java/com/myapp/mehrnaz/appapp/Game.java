@@ -205,7 +205,7 @@ public class Game extends Activity {
 	    		Log.i("loadCards()", "card["+(i%COL_COUNT)+
 	    				"]["+(i/COL_COUNT)+"]=" + cards[i%COL_COUNT][i/COL_COUNT]);*/
 	    	}
-			Log.i("loadCards()", "before loop" );
+
 			for (int i=0; i<ROW_COUNT ; i++)
 			{
 				for (int z=0  ; z<COL_COUNT ; z++)
@@ -214,10 +214,10 @@ public class Game extends Activity {
 					cards[z][i]=rtrn[size][1];
 					Log.i("loadCards()", "card["+(z)+
 							"]["+(i)+"]=" + cards[z][i]);
-					Log.i("loadCards()", "[size counter]="+size );
+
 				}
 			}
-			Log.i("loadCards()", "After loop" );
+
 	    }
 		catch (Exception e) {
 			Log.e("loadCards()", e+"");
@@ -230,19 +230,19 @@ public class Game extends Activity {
     	 row.setHorizontalGravity(Gravity.CENTER);
          
          for (int x = 0; x < COL_COUNT; x++) {
-		         row.addView(createImageButton(x,y));
+		         row.addView(createButton(x,y));
          }
          return row;
     }
     
-    private View createImageButton(int x, int y){
+    private View createButton(int x, int y){
     	Button button = new Button(context);
 		button.setBackgroundDrawable(null);
 		Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 		button.setTypeface(fontawsome);
 		button.setTextColor(Color.GRAY);
 		button.setText("\uf04d");
-		button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 45);
+		button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 100);
 		button.setId(100*x+y);
     	button.setOnClickListener(buttonListener);
 
