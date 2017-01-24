@@ -5,9 +5,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
 
-/**
- * Created by Mehrnaz on 1/21/2017.
- */
 
 public class Game extends Activity {
     // textviews for game
@@ -21,13 +18,25 @@ public class Game extends Activity {
     TextView txt_item8;
     TextView txt_item9;
     Typeface font;
-    
-    private ButtonListener buttonListener;
-    private TableLayout mainTable;
-    private Context context;
-    private static int ROW_COUNT = -1;
+	
+    	//H>T added start
+        private static int ROW_COUNT = -1;
 	private static int COL_COUNT = -1;
-
+	private Context context;
+	private Drawable backImage;
+	private int [] [] cards;
+	private  int winCard;
+	private int size;
+	private Card firstCard;
+	private Card seconedCard;
+	private ButtonListener buttonListener;
+	public int[][] rtrn;
+	private static Object lock = new Object();
+	private int turns;
+	private TableLayout mainTable;
+	private UpdateCardsHandler handler;
+	//H>T added End
+	
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -91,8 +100,7 @@ public class Game extends Activity {
     	cards = new int [COL_COUNT] [ROW_COUNT];
     	
     	
-    	mainTable.removeView(findViewById(R.id.TableRow01));
-    	mainTable.removeView(findViewById(R.id.TableRow02));
+
     	
     	TableRow tr = ((TableRow)findViewById(R.id.TableRow03));
     	tr.removeAllViews();
