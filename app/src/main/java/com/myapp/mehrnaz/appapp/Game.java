@@ -165,5 +165,194 @@ public class Game extends Activity {
         
         return b;
     }
+    
+	private void loadCards(){
+		try{
+			 winCard=0;
+	    	 size = ROW_COUNT*COL_COUNT;
+	    	
+	    	Log.i("loadCards()","size=" + size);
+	    	
+	    	ArrayList<Integer> list = new ArrayList<Integer>();
+	    	
+	    	for(int i=0;i<size;i++){
+	    		list.add(new Integer(i));
+	    	}
+	    	
+	    	
+	    	Random r = new Random();
+	    
+	    	for(int i=size-1;i>=0;i--){
+	    		int t=0;
+	    		
+	    		if(i>0){
+	    			t = r.nextInt(i);
+	    		}
+	    		
+	    		t=list.remove(t).intValue();
+	    		cards[rtrn[i][0]%COL_COUNT][rtrn[i][0]/COL_COUNT]=rtrn[i][1];
+	    		
+	    		Log.i("loadCards()", "card["+(i%COL_COUNT)+
+	    				"]["+(i/COL_COUNT)+"]=" + cards[i%COL_COUNT][i/COL_COUNT]);
+	    	}
+	    }
+		catch (Exception e) {
+			Log.e("loadCards()", e+"");
+		}
+		
+    }
+    
+    private TableRow createRow(int y){
+    	 TableRow row = new TableRow(context);
+    	 row.setHorizontalGravity(Gravity.CENTER);
+         
+         for (int x = 0; x < COL_COUNT; x++) {
+		         row.addView(createImageButton(x,y));
+         }
+         return row;
+    }
+    
+    private View createImageButton(int x, int y){
+    	Button button = new Button(context);
+		button.setBackgroundDrawable(null);
+		Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
+		button.setTypeface(fontawsome);
+		button.setTextColor(Color.GRAY);
+		button.setText("\uf04d");
+		button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 45);
+		button.setId(100*x+y);
+    	button.setOnClickListener(buttonListener);
+
+    	return button;
+    }
+    
+    class ButtonListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			
+			synchronized (lock) {
+				if(firstCard!=null && seconedCard != null){
+					return;
+				}
+				int id = v.getId();
+				int x = id/100;
+				int y = id%100;
+				Log.i("onClick()", "card["+(x)+
+						"]["+(y)+"]=" + cards[x][y]);
+				turnCard((Button)v,x,y);
+			}
+			
+		}
+
+		private void turnCard(Button button,int x, int y) {
+		//	button.setBackgroundDrawable(images.get(cards[x][y]));
+			Log.i("turndCards()", "card["+(x)+
+					"]["+(y)+"]=" + cards[x][y]);
+			Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
+			button.setTypeface(fontawsome);
+			button.setTextColor(Color.GREEN);
+			String s = Character.toString((char) cards[x][y]);
+			button.setText(s);
+			button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 45);
+
+
+			if(firstCard==null){
+				firstCard = new Card(button,x,y);
+			}
+			else{ 
+				
+				if(firstCard.x == x && firstCard.y == y){
+					return; //the user pressed the same card
+				}
+					
+				seconedCard = new Card(button,x,y);
+				
+				turns++;
+				((TextView)findViewById(R.id.tv1)).setText("Tries: "+turns);
+				
+			
+				TimerTask tt = new TimerTask() {
+					
+					@Override
+					public void run() {
+						try{
+							synchronized (lock) {
+							  handler.sendEmptyMessage(0);
+							}
+						}
+						catch (Exception e) {
+							Log.e("E1", e.getMessage());
+						}
+					}
+				};
+				
+				  Timer t = new Timer(false);
+			        t.schedule(tt, 1300);
+			}
+			
+				
+		   }
+			
+		}
+    
+    class UpdateCardsHandler extends Handler{
+    	
+    	@Override
+    	public void handleMessage(Message msg) {
+    		synchronized (lock) {
+    			checkCards();
+    		}
+    	}
+    	 public void checkCards(){
+    	    	if(cards[seconedCard.x][seconedCard.y] == cards[firstCard.x][firstCard.y]){
+    				firstCard.button.setVisibility(View.INVISIBLE);
+    				seconedCard.button.setVisibility(View.INVISIBLE);
+					winCard +=1;
+
+					if (winCard==size/2)
+					{
+						//gets
+						CharSequence text = "You Win " + getStar() + " Star";
+						Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+						toast.show();
+						onCreate(Bundle.EMPTY);
+					}
+
+    			}
+    			else {
+    				//seconedCard.button.setBackgroundDrawable(null);
+    				//firstCard.button.setBackgroundDrawable(null);
+
+					seconedCard.button.setTextColor(Color.GRAY);
+					seconedCard.button.setText("\uf04d");
+					seconedCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
+
+
+					firstCard.button.setTextColor(Color.GRAY);
+					firstCard.button.setText("\uf04d");
+					firstCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
+    			}
+    	    	
+    	    	firstCard=null;
+    			seconedCard=null;
+    	    }
+
+		public int getStar ()
+		{
+			int sizeDiv2=size/2;
+
+			if (turns<size)
+			{return 3;}
+			if (turns>=size && turns< (size*((sizeDiv2)-(sizeDiv2-2))))
+			{return 2;}
+			if (turns>= (size*(sizeDiv2)) &&turns<= (size*((sizeDiv2)-sizeDiv2-3) ))
+			{return 1;}
+			else
+			return 0;
+		}
+    }
+    
+   
     */
 }
