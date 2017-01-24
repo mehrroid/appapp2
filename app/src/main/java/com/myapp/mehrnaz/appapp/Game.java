@@ -313,8 +313,6 @@ public class Game extends Activity {
 				  Timer t = new Timer(false);
 			        t.schedule(tt, 1300);
 			}
-			
-				
 		   }
 			
 		}
