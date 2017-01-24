@@ -122,10 +122,12 @@ public class Game extends Activity {
    // /*
         private void newGame(int levelNo) {
 
-			Log.i("loadCards()","size=" + getRowAndCol(levelNo));
-			Log.i("loadCards()","size=" + levelNo/getRowAndCol(levelNo));
-    	ROW_COUNT = getRowAndCol(levelNo);
-    	COL_COUNT = levelNo/ROW_COUNT;
+			Log.i("newGame()","levelNo=" + getRowAndCol(levelNo));
+			Log.i("newGame()","levelNo/getRowAndCol=" + levelNo/getRowAndCol(levelNo));
+			COL_COUNT =  getRowAndCol(levelNo);
+    		ROW_COUNT =  levelNo/COL_COUNT ;
+
+			Log.i("newGame()","COL_COUNT=" +COL_COUNT);
 		int CCount = (ROW_COUNT*COL_COUNT) ;
 
 		final int[] checkPaper = new int[CCount];
@@ -157,47 +159,19 @@ public class Game extends Activity {
 	}
     private int getRowAndCol(int i)
     {
-        int a ,b =0;
-          if (i%2==0 && i<12)
-          {
-            a=2;   
-            b= i/a;
-           
-           
-          }
-           if (i%3==0 && i<30)
-          {
-            a=3;   
-            b= i/a;
-            
-            
-          }
-          if (i%4==0 && i<40)
-          {
-             a=4;   
-            b= i/a;
-          }
-          if (i%5==0 && i<50)
-          {
-            a=5;   
-            b= i/a;
-          }
-          if (i%6==0 && i<50)
-          {
-            a=6;   
-            b= i/a;
-          }
-          if (i%7==0 && i<50)
-          {
-            a=7;   
-            b= i/a;
-          }
-           if (i%8==0 && i<50)
-          {
-            a=8;   
-            b= i/a;
-          }
-        
+        int a=0;
+		int b =0;
+        for (int x =2 ; x<8 ; x++)
+		{
+			if (i%x==0)
+			{
+				a=i/x;
+				b=x;
+				break;
+			}
+		}
+		Log.i("getRowAndCol()","A=" + a);
+		Log.i("getRowAndCol()","B=" + b);
         return b;
     }
     
@@ -214,22 +188,36 @@ public class Game extends Activity {
 	    		list.add(new Integer(i));
 	    	}
 	    	
-	    	
+
 	    	Random r = new Random();
-	    
+
 	    	for(int i=size-1;i>=0;i--){
 	    		int t=0;
-	    		
+
 	    		if(i>0){
 	    			t = r.nextInt(i);
 	    		}
-	    		
+
 	    		t=list.remove(t).intValue();
+				/*
 	    		cards[rtrn[i][0]%COL_COUNT][rtrn[i][0]/COL_COUNT]=rtrn[i][1];
-	    		
+
 	    		Log.i("loadCards()", "card["+(i%COL_COUNT)+
-	    				"]["+(i/COL_COUNT)+"]=" + cards[i%COL_COUNT][i/COL_COUNT]);
+	    				"]["+(i/COL_COUNT)+"]=" + cards[i%COL_COUNT][i/COL_COUNT]);*/
 	    	}
+			Log.i("loadCards()", "before loop" );
+			for (int i=0; i<ROW_COUNT ; i++)
+			{
+				for (int z=0  ; z<COL_COUNT ; z++)
+				{
+					size=size-1;
+					cards[z][i]=rtrn[size][1];
+					Log.i("loadCards()", "card["+(z)+
+							"]["+(i)+"]=" + cards[z][i]);
+					Log.i("loadCards()", "[size counter]="+size );
+				}
+			}
+			Log.i("loadCards()", "After loop" );
 	    }
 		catch (Exception e) {
 			Log.e("loadCards()", e+"");
