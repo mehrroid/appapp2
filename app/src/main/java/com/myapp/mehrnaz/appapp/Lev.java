@@ -64,7 +64,7 @@ public class Lev extends Activity {
             switch (v.getTag().toString()) {
                 case "00":
                     
-                   //Intent intent = new Intent(Lev.this, Game.class);
+
                     intent.putExtra("item", getString(R.string.icon_plus));
                     intent.putExtra("levelNo", (int)4);
                     startActivity(intent);
