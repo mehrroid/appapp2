@@ -66,49 +66,49 @@ public class Lev extends Activity {
                     
                    //Intent intent = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_plus));
-                    intent.putExtra("levelNo", 0);
+                    intent.putExtra("levelNo", (int)4);
                     startActivity(intent);
                     break;
                 case "01":
                //     Intent intent2 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_cloud));
-                    intent.putExtra("levelNo", 1);
+                    intent.putExtra("levelNo", (int)6);
                     startActivity(intent);
                     break;
                 case "02":
                     //Intent intent3 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_setting));
-                    intent.putExtra("levelNo", 2);
+                    intent.putExtra("levelNo", (int)8);
                     startActivity(intent);
                     break;
                 case "03":
                     //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent4.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", 3);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (int)10);
                     startActivity(intent);
                     break;
                 case "04":
                     //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent4.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", 4);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (int)12);
                     startActivity(intent);
                     break;
                 case "05":
                     //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent4.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", 5);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (int)14);
                     startActivity(intent);
                     break;
                 case "06":
                     //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent4.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", 6);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (int)16);
                     startActivity(intent);
                     break;
                 case "07":
-                    Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent4.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", 7);
+                 //   Intent intent = new Intent(Lev.this, Game.class);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (int)18);
                     startActivity(intent);
                     break;
                 case "10":

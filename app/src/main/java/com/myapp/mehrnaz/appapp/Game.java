@@ -1,9 +1,43 @@
 package com.myapp.mehrnaz.appapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.TableLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.regex.Pattern;
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.util.Linkify;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 
 public class Game extends Activity {
@@ -19,8 +53,8 @@ public class Game extends Activity {
     TextView txt_item9;
     Typeface font;
 	
-    	//H>T added start
-        private static int ROW_COUNT = -1;
+    	//H.T added start
+    private static int ROW_COUNT = -1;
 	private static int COL_COUNT = -1;
 	private Context context;
 	private Drawable backImage;
@@ -41,16 +75,15 @@ public class Game extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
+        //HT added
+        handler = new UpdateCardsHandler();
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
-         /*
-         
-         //HT added
         int levelNo = getIntent().getIntExtra("levelNo", 0);
-        mainTable = (TableLayout)findViewById(R.id.TableLayout);
+		Log.i("loadCards()","levelNo=" + levelNo);
+        mainTable = (TableLayout)findViewById(R.id.TableLayout03);
         context  = mainTable.getContext();
-        
         newGame(levelNo);
-          */
+
   
         txt_item1 = (TextView) findViewById(R.id.txt_item1);
         txt_item2 = (TextView) findViewById(R.id.txt_item2);
@@ -86,12 +119,14 @@ public class Game extends Activity {
       
 
     }
-    /*
+   // /*
         private void newGame(int levelNo) {
-            
-    	ROW_COUNT = r;
-    	COL_COUNT = c;
-		int CCount = (r*c) ;
+
+			Log.i("loadCards()","size=" + getRowAndCol(levelNo));
+			Log.i("loadCards()","size=" + levelNo/getRowAndCol(levelNo));
+    	ROW_COUNT = getRowAndCol(levelNo);
+    	COL_COUNT = levelNo/ROW_COUNT;
+		int CCount = (ROW_COUNT*COL_COUNT) ;
 
 		final int[] checkPaper = new int[CCount];
 		ClassRandom rndm = new ClassRandom();
@@ -114,15 +149,15 @@ public class Game extends Activity {
     	 
     	 firstCard=null;
     	 loadCards();
-    	 
+    	 //tedad bar sai : turns
     	 turns=0;
-    	 ((TextView)findViewById(R.id.tv1)).setText("Tries: "+turns);
+
     	 
 			
 	}
     private int getRowAndCol(int i)
     {
-        int a ,b ;
+        int a ,b =0;
           if (i%2==0 && i<12)
           {
             a=2;   
@@ -215,7 +250,7 @@ public class Game extends Activity {
     private View createImageButton(int x, int y){
     	Button button = new Button(context);
 		button.setBackgroundDrawable(null);
-		Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
+		Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 		button.setTypeface(fontawsome);
 		button.setTextColor(Color.GRAY);
 		button.setText("\uf04d");
@@ -269,7 +304,7 @@ public class Game extends Activity {
 				seconedCard = new Card(button,x,y);
 				
 				turns++;
-				((TextView)findViewById(R.id.tv1)).setText("Tries: "+turns);
+				//((TextView)findViewById(R.id.tv1)).setText("Tries: "+turns);
 				
 			
 				TimerTask tt = new TimerTask() {
@@ -354,5 +389,5 @@ public class Game extends Activity {
     }
     
    
-    */
+    //*/
 }
