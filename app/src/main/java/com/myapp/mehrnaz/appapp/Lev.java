@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -47,7 +48,7 @@ public class Lev extends Activity {
                 card.setPadding(5, 5, 5, 5);
                 card.setGravity(Gravity.CENTER);
                 card.setLayoutParams(params);
-                card.setTag(i + "" + j);
+                card.setTag(i +""+ j);
                 card.setBackgroundResource(R.color.colorCloud);
                 ll.addView(card);
                card.setOnClickListener(clickListener);
@@ -63,84 +64,66 @@ public class Lev extends Activity {
             
             switch (v.getTag().toString()) {
                 case "00":
-                    
-
+                    Log.i("goneToGame()","case 00");
                     intent.putExtra("item", getString(R.string.icon_plus));
-                    intent.putExtra("levelNo", (int)4);
+                    intent.putExtra("levelNo", (Integer)10);
                     startActivity(intent);
                     break;
                 case "01":
+                    Log.i("goneToGame()","case 01");
                //     Intent intent2 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_cloud));
-                    intent.putExtra("levelNo", (int)6);
+                    intent.putExtra("levelNo", (Integer)12);
                     startActivity(intent);
                     break;
                 case "02":
+                    Log.i("goneToGame()","case 02");
                     //Intent intent3 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_setting));
-                    intent.putExtra("levelNo", (int)8);
-                    startActivity(intent);
-                    break;
-                case "03":
-                    //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (int)10);
-                    startActivity(intent);
-                    break;
-                case "04":
-                    //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (int)12);
-                    startActivity(intent);
-                    break;
-                case "05":
-                    //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (int)14);
-                    startActivity(intent);
-                    break;
-                case "06":
-                    //Intent intent4 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (int)16);
-                    startActivity(intent);
-                    break;
-                case "07":
-                 //   Intent intent = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (int)18);
+                    intent.putExtra("levelNo", (Integer)14);
                     startActivity(intent);
                     break;
                 case "10":
-                //  Intent intent5 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_cloud));
+                    Log.i("goneToGame()","case 03");
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
+                    intent.putExtra("item", getString(R.string.icon_setting));
+                    intent.putExtra("levelNo", (Integer)8);
                     startActivity(intent);
                     break;
                 case "11":
-                    //tent intent6 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_cloud));
+                    Log.i("goneToGame()","case 04");
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (Integer)12);
                     startActivity(intent);
                     break;
                 case "12":
-               //   Intent intent7 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_cloud));
+                    Log.i("goneToGame()","case 05");
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (Integer)14);
                     startActivity(intent);
                     break;
                 case "20":
-                 // Intent intent8 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_cloud));
+                    Log.i("goneToGame()","case 06");
+                    //Intent intent4 = new Intent(Lev.this, Game.class);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (Integer)16);
                     startActivity(intent);
                     break;
                 case "21":
-               //   Intent intent9 = new Intent(Lev.this, Game.class);
-                    intent.putExtra("item", getString(R.string.icon_cloud));
+                 //   Intent intent = new Intent(Lev.this, Game.class);
+                    intent.putExtra("item", getString(R.string.icon_feed));
+                    intent.putExtra("levelNo", (Integer)18);
                     startActivity(intent);
                     break;
                 case "22":
-                 // Intent intent10 = new Intent(Lev.this, Game.class);
+                    //tent intent6 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_cloud));
                     startActivity(intent);
+                    intent.putExtra("levelNo", (Integer)20);
                     break;
+
             }
         }
     };
