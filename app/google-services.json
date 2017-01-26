@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "95862863709",
+    "firebase_url": "https://tabgame-d79c7.firebaseio.com",
+    "project_id": "tabgame-d79c7",
+    "storage_bucket": "tabgame-d79c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95862863709:android:2410e01ea4355cd2",
+        "android_client_info": {
+          "package_name": "com.myapp.mehrnaz.appapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95862863709-auftbv12v5kqa8l31cnrhr1anhnec4v4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myapp.mehrnaz.appapp",
+            "certificate_hash": "A45921899E607744C749B334F99DF42802C8B464"
+          }
+        },
+        {
+          "client_id": "95862863709-uu3bocsgkvqkek7gfvausase7fuimjc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFZ8KbtveQSE_2P34EeIH1ygs9y5rPFCY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95862863709-uu3bocsgkvqkek7gfvausase7fuimjc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
