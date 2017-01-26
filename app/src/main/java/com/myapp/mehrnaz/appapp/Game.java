@@ -5,6 +5,10 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -200,15 +204,32 @@ public class Game extends Activity {
     }
     
     private View createButton(int x, int y){
-    	Button button = new Button(context);
+    	final Button button = new Button(context);
+		TextView textView=new TextView(context);
 		button.setBackgroundDrawable(null);
 		Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 		button.setTypeface(fontawsome);
 		button.setTextColor(Color.GRAY);
-		button.setText("\uf04d");
+
+		//button.setText("\uf04d");
+		button.setText(R.string.icon_cloud);
+		button.setBackgroundResource(R.drawable.square);
+
+		//textView.setText("Hi");
+		//textView.setTextColor(Color.RED);
+
 		button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 100);
 		button.setId(100*x+y);
-    	button.setOnClickListener(buttonListener);
+    	//button.setOnClickListener(buttonListener);
+		button.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				final Animation myAnim = AnimationUtils.loadAnimation(Game.this, R.anim.anim2);
+				button.startAnimation(myAnim);
+
+			}
+		});
 
     	return button;
     }

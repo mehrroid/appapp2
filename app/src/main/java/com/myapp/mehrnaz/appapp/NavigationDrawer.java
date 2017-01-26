@@ -97,7 +97,7 @@ public class NavigationDrawer extends AppCompatActivity
         txtIconSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Lev.class);
+                Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.test.class);
                 startActivity(intent);
             }
         });
