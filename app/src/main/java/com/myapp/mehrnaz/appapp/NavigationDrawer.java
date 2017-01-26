@@ -18,6 +18,9 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 // This is mainpage
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,10 +48,20 @@ public class NavigationDrawer extends AppCompatActivity
     TextView txtSq2Bg;
     TextView txtSq3Bg;
 
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+
+        //HT adsMob(banner) section start
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        //HT adsMob section end
+
+
         //UI mainpage
         //iconplay haman mosalasha hastan
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
