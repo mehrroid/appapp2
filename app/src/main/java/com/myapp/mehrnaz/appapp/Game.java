@@ -72,7 +72,6 @@ public class Game extends Activity {
         setContentView(R.layout.game_layout);
         //HT added
         handler = new UpdateCardsHandler();
-		buttonListener = new ButtonListener();
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
         int levelNo = getIntent().getIntExtra("levelNo", 0);
 		Log.i("loadCards()","levelNo=" + levelNo);
@@ -221,9 +220,7 @@ public class Game extends Activity {
 
 		button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 100);
 		button.setId(100*x+y);
-    	button.setOnClickListener(buttonListener);
-
-		/* HT - E
+    	//button.setOnClickListener(buttonListener);
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -232,7 +229,7 @@ public class Game extends Activity {
 				button.startAnimation(myAnim);
 
 			}
-		}); */
+		});
 
     	return button;
     }
@@ -258,18 +255,15 @@ public class Game extends Activity {
 
 		private void turnCard(Button button,int x, int y) {
 		//	button.setBackgroundDrawable(images.get(cards[x][y]));
-
 			Log.i("turndCards()", "card["+(x)+
 					"]["+(y)+"]=" + cards[x][y]);
-			Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+			Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
 			button.setTypeface(fontawsome);
 			button.setTextColor(Color.GREEN);
 			String s = Character.toString((char) cards[x][y]);
 			button.setText(s);
 			button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 45);
-			//HT789
-			final Animation myAnim = AnimationUtils.loadAnimation(Game.this, R.anim.anim2);
-			button.startAnimation(myAnim);
+
 
 			if(firstCard==null){
 				firstCard = new Card(button,x,y);

@@ -9,38 +9,19 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-
 /**
  * Created by Mehrnaz on 1/21/2017.
  */
 
 public class Lev extends Activity {
     private LinearLayout container;
-    InterstitialAd mInterstitialAd;
-    private  String valueOfplayGame;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level);
         container = (android.widget.LinearLayout) findViewById(R.id.activity_main);
         //yek array dar string be esm type tarif shode ast
         draw(getResources().getStringArray(R.array.type), 3);
-
-        //ADSMOB SECTION START
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-                playingGame(valueOfplayGame);
-            }
-        });
-        requestNewInterstitial();
-        //ADSMOB SECTION END
     }
 
     private void draw(String[] strs, int column) {
@@ -79,93 +60,71 @@ public class Lev extends Activity {
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            //in ghesmat taghir bokne bari level hay 3 be bad ads ro aval neshon bedeh
-            valueOfplayGame =v.getTag().toString();
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                playingGame(valueOfplayGame);
-            }
-
-        }
-    };
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-    }
-
-    private void  playingGame(String in)
-    {
-        Intent intent = new Intent(Lev.this, Game.class);
-
-            switch (in) {
+            Intent intent = new Intent(Lev.this, Game.class);
+            
+            switch (v.getTag().toString()) {
                 case "00":
-                    Log.i("goneToGame()", "case 00");
+                    Log.i("goneToGame()","case 00");
                     intent.putExtra("item", getString(R.string.icon_plus));
-                    intent.putExtra("levelNo", (Integer) 10);
+                    intent.putExtra("levelNo", (Integer)10);
                     startActivity(intent);
                     break;
                 case "01":
-                    Log.i("goneToGame()", "case 01");
-                    //     Intent intent2 = new Intent(Lev.this, Game.class);
+                    Log.i("goneToGame()","case 01");
+               //     Intent intent2 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_cloud));
-                    intent.putExtra("levelNo", (Integer) 12);
+                    intent.putExtra("levelNo", (Integer)12);
                     startActivity(intent);
                     break;
                 case "02":
-                    Log.i("goneToGame()", "case 02");
+                    Log.i("goneToGame()","case 02");
                     //Intent intent3 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_setting));
-                    intent.putExtra("levelNo", (Integer) 14);
+                    intent.putExtra("levelNo", (Integer)14);
                     startActivity(intent);
                     break;
                 case "10":
-                    Log.i("goneToGame()", "case 03");
+                    Log.i("goneToGame()","case 03");
                     //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_setting));
-                    intent.putExtra("levelNo", (Integer) 8);
+                    intent.putExtra("levelNo", (Integer)8);
                     startActivity(intent);
                     break;
                 case "11":
-                    Log.i("goneToGame()", "case 04");
+                    Log.i("goneToGame()","case 04");
                     //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (Integer) 12);
+                    intent.putExtra("levelNo", (Integer)12);
                     startActivity(intent);
                     break;
                 case "12":
-                    Log.i("goneToGame()", "case 05");
+                    Log.i("goneToGame()","case 05");
                     //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (Integer) 14);
+                    intent.putExtra("levelNo", (Integer)14);
                     startActivity(intent);
                     break;
                 case "20":
-                    Log.i("goneToGame()", "case 06");
+                    Log.i("goneToGame()","case 06");
                     //Intent intent4 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (Integer) 16);
+                    intent.putExtra("levelNo", (Integer)16);
                     startActivity(intent);
                     break;
                 case "21":
-                    //   Intent intent = new Intent(Lev.this, Game.class);
+                 //   Intent intent = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_feed));
-                    intent.putExtra("levelNo", (Integer) 18);
+                    intent.putExtra("levelNo", (Integer)18);
                     startActivity(intent);
                     break;
                 case "22":
                     //tent intent6 = new Intent(Lev.this, Game.class);
                     intent.putExtra("item", getString(R.string.icon_cloud));
                     startActivity(intent);
-                    intent.putExtra("levelNo", (Integer) 28);
+                    intent.putExtra("levelNo", (Integer)20);
                     break;
 
             }
-
-    }
-
+        }
+    };
 }
