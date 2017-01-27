@@ -24,6 +24,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             />
         <activity android:name=".test"/>
+        <activity android:name=".Star"/>
+
         <activity android:name=".Lev"/>
         <activity android:name=".Game"/>
     </application>

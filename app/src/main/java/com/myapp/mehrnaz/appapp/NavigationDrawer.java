@@ -118,15 +118,20 @@ public class NavigationDrawer extends AppCompatActivity
         txtIconStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                starFragment star_frag = new starFragment();
-                loadFragment(star_frag);
+//                starFragment star_frag = new starFragment();
+//                loadFragment(star_frag);
+
+                Intent intent = new Intent(NavigationDrawer.this,com.myapp.mehrnaz.appapp.Star.class);
+                startActivity(intent);
             }
         });
         txtStarBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                starFragment star_frag = new starFragment();
-                loadFragment(star_frag);
+                Intent intent = new Intent(NavigationDrawer.this,com.myapp.mehrnaz.appapp.Star.class);
+                startActivity(intent);
+//                starFragment star_frag = new starFragment();
+//                loadFragment(star_frag);
             }
         });
         txtIconSetting.setOnClickListener(new View.OnClickListener() {
