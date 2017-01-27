@@ -6,13 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-
 /**
  * Created by Mehrnaz on 1/21/2017.
  */
@@ -23,16 +23,30 @@ public class Lev extends Activity {
     InterstitialAd mInterstitialAd;
     SharedPre sp;
 
+    //az icon play baraye mosalasha estfade shode
+
+    //items of header
+    TextView txtStarBg;
+    TextView txtIconStar;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level);
         container = (android.widget.LinearLayout) findViewById(R.id.activity_main);
-        //yek array dar string be esm type tarif shode ast
+        Button btnfooter = (Button) findViewById(R.id.btnfooter);
+
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+//items of header
+        txtIconStar = (TextView) findViewById(R.id.txtstar);
+        txtIconStar.setTypeface(font2);
+        txtStarBg = (TextView) findViewById(R.id.txtstarbg);
+        txtStarBg.setTypeface(font2);
+
+
         draw(getResources().getStringArray(R.array.type), 3);
-
-         sp = new SharedPre(getApplicationContext());
-
-        //full screen adsMob start
+        sp = new SharedPre(getApplicationContext());
+//full screen adsMob start
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.setAdListener(new AdListener() {
@@ -75,12 +89,11 @@ public class Lev extends Activity {
                 card.setTag(i +""+ j);
                 card.setBackgroundResource(R.color.colorCloud);
                 ll.addView(card);
-               card.setOnClickListener(clickListener);
+                card.setOnClickListener(clickListener);
                 index++;
             }
         }
     }
-
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -98,52 +111,52 @@ public class Lev extends Activity {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
-        switch (in) {
-            case "00":
-                Log.i("goneToGame()", "case 00");
-                levelselect=1;
-                icon=R.string.icon_plus;
+            switch (in) {
+                case "00":
+                    Log.i("goneToGame()", "case 00");
+                    levelselect=1;
+                    icon=R.string.icon_plus;
 
-                break;
-            case "01":
-                Log.i("goneToGame()", "case 01");
-                levelselect=2;
-                icon=R.string.icon_plus;
-                break;
-            case "02":
-                Log.i("goneToGame()", "case 02");
-                levelselect=3;
-                icon=R.string.icon_plus;
-                break;
-            case "10":
-                Log.i("goneToGame()", "case 03");
-                levelselect=4;
-                icon=R.string.icon_plus;
-                break;
-            case "11":
-                Log.i("goneToGame()", "case 04");
-                levelselect=5;
-                icon=R.string.icon_plus;
-                break;
-            case "12":
-                Log.i("goneToGame()", "case 05");
-                levelselect=6;
-                icon=R.string.icon_plus;
-                break;
-            case "20":
-                Log.i("goneToGame()", "case 06");
-                levelselect=7;
-                icon=R.string.icon_plus;
-            case "21":
-                levelselect=8;
-                icon=R.string.icon_plus;
-                break;
-            case "22":
-                levelselect=9;
-                icon=R.string.icon_plus;
-                break;
+                    break;
+                case "01":
+                    Log.i("goneToGame()", "case 01");
+                    levelselect=2;
+                    icon=R.string.icon_plus;
+                    break;
+                case "02":
+                    Log.i("goneToGame()", "case 02");
+                    levelselect=3;
+                    icon=R.string.icon_plus;
+                    break;
+                case "10":
+                    Log.i("goneToGame()", "case 03");
+                    levelselect=4;
+                    icon=R.string.icon_plus;
+                    break;
+                case "11":
+                    Log.i("goneToGame()", "case 04");
+                    levelselect=5;
+                    icon=R.string.icon_plus;
+                    break;
+                case "12":
+                    Log.i("goneToGame()", "case 05");
+                    levelselect=6;
+                    icon=R.string.icon_plus;
+                    break;
+                case "20":
+                    Log.i("goneToGame()", "case 06");
+                    levelselect=7;
+                    icon=R.string.icon_plus;
+                case "21":
+                    levelselect=8;
+                    icon=R.string.icon_plus;
+                    break;
+                case "22":
+                    levelselect=9;
+                    icon=R.string.icon_plus;
+                    break;
 
-        }
+            }
               /*
             int stars=0;
             int levelNo=0;
@@ -154,15 +167,12 @@ public class Lev extends Activity {
                 Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+sp.Get("levelNo"));
             }catch(NumberFormatException nfe)
             {
-
             }
-
             if ((stars>2 && levelselect ==levelNo-1) || levelselect==1 )
             {
                 if (levelselect!=1)
                 {
                     sp.Set("stars",Integer.toString(stars-2));
-
                 }
                 Intent intent = new Intent(Lev.this, Game.class);
                 levelselect=levelselect*2;
@@ -177,7 +187,7 @@ public class Lev extends Activity {
                 startActivity(intent);
             }
 
-     }
+        }
     }
 
     private void requestNewInterstitial() {

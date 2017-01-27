@@ -1,12 +1,15 @@
 package com.myapp.mehrnaz.appapp;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,7 +25,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.appinvite.AppInviteInvitation;
+
+import static android.R.attr.fragment;
 
 // This is mainpage
 public class NavigationDrawer extends AppCompatActivity
@@ -50,14 +54,12 @@ public class NavigationDrawer extends AppCompatActivity
     TextView userPlusbg;
     TextView txtSq2Bg;
     TextView txtSq3Bg;
-
     private AdView mAdView;
     private static final int REQUEST_INVITE = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
-
         //HT adsMob(banner) section start
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -110,10 +112,36 @@ public class NavigationDrawer extends AppCompatActivity
         txtSq3Bg = (TextView) findViewById(R.id.txtsquare3bg);
         txtSq3Bg.setTypeface(font);
         //Go to Level Activity
+
+
+
+        txtIconStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starFragment star_frag = new starFragment();
+                loadFragment(star_frag);
+            }
+        });
+        txtStarBg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starFragment star_frag = new starFragment();
+                loadFragment(star_frag);
+            }
+        });
         txtIconSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.test.class);
+                Intent intent = new Intent(NavigationDrawer.this,com.myapp.mehrnaz.appapp.Lev.class);
+                startActivity(intent);
+
+            }
+        });
+        txtIconPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(NavigationDrawer.this,com.myapp.mehrnaz.appapp.Lev.class);
                 startActivity(intent);
             }
         });
@@ -121,6 +149,8 @@ public class NavigationDrawer extends AppCompatActivity
         txtIconUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                userFrag usr_frag = new userFrag();
+//                loadFragment(usr_frag);
                 Intent intent = new Intent(NavigationDrawer.this, com.myapp.mehrnaz.appapp.Lev.class);
                 startActivity(intent);
             }
@@ -144,6 +174,8 @@ public class NavigationDrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -174,30 +206,6 @@ public class NavigationDrawer extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-         /*
-            //share section start
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d("invite", "onActivityResult: requestCode=" + requestCode + ", resultCode=" + resultCode);
-
-        if (requestCode == REQUEST_INVITE) {
-            if (resultCode == RESULT_OK) {
-                // Get the invitation IDs of all sent messages
-                String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
-                for (String id : ids) {
-                    Log.d("invite", "onActivityResult: sent invitation " + id);
-                }
-            } else {
-                // Sending failed or it was canceled, show failure message to the user
-                // ...
-            }
-        }
-    }
-    //share section end
-*/
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -214,17 +222,6 @@ public class NavigationDrawer extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-            /*
-            //share section start
-            Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
-                    .setMessage(getString(R.string.invitation_message))
-                    .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
-                    .setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
-                    .setCallToActionText(getString(R.string.invitation_cta))
-                    .build();
-            startActivityForResult(intent, REQUEST_INVITE);
-            //share esection end
-            */
         } else if (id == R.id.nav_send) {
 
         }
@@ -232,6 +229,13 @@ public class NavigationDrawer extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(fragment.getTag());
+        transaction.commit();
     }
 
 }
