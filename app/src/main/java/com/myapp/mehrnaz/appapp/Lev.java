@@ -21,6 +21,8 @@ public class Lev extends Activity {
     private LinearLayout container;
     private String vGatTag;
     InterstitialAd mInterstitialAd;
+    SharedPre sp;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level);
@@ -28,11 +30,11 @@ public class Lev extends Activity {
         //yek array dar string be esm type tarif shode ast
         draw(getResources().getStringArray(R.array.type), 3);
 
+         sp = new SharedPre(getApplicationContext());
+
         //full screen adsMob start
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-
-
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
@@ -90,75 +92,92 @@ public class Lev extends Activity {
     };
 
     private void playingGame(String in) {
-        Intent intent = new Intent(Lev.this, Game.class);
 
+        int levelselect=0;
+        int icon;
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
         switch (in) {
             case "00":
                 Log.i("goneToGame()", "case 00");
-                intent.putExtra("item", getString(R.string.icon_plus));
-                intent.putExtra("levelNo", (Integer) 10);
-                startActivity(intent);
+                levelselect=1;
+                icon=R.string.icon_plus;
+
                 break;
             case "01":
                 Log.i("goneToGame()", "case 01");
-                //     Intent intent2 = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_cloud));
-                intent.putExtra("levelNo", (Integer) 12);
-                startActivity(intent);
+                levelselect=2;
+                icon=R.string.icon_plus;
                 break;
             case "02":
                 Log.i("goneToGame()", "case 02");
-                //Intent intent3 = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_setting));
-                intent.putExtra("levelNo", (Integer) 14);
-                startActivity(intent);
+                levelselect=3;
+                icon=R.string.icon_plus;
                 break;
             case "10":
                 Log.i("goneToGame()", "case 03");
-                //Intent intent4 = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_setting));
-                intent.putExtra("levelNo", (Integer) 8);
-                startActivity(intent);
+                levelselect=4;
+                icon=R.string.icon_plus;
                 break;
             case "11":
                 Log.i("goneToGame()", "case 04");
-                //Intent intent4 = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_feed));
-                intent.putExtra("levelNo", (Integer) 12);
-                startActivity(intent);
+                levelselect=5;
+                icon=R.string.icon_plus;
                 break;
             case "12":
                 Log.i("goneToGame()", "case 05");
-                //Intent intent4 = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_feed));
-                intent.putExtra("levelNo", (Integer) 14);
-                startActivity(intent);
+                levelselect=6;
+                icon=R.string.icon_plus;
                 break;
             case "20":
                 Log.i("goneToGame()", "case 06");
-                //Intent intent4 = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_feed));
-                intent.putExtra("levelNo", (Integer) 16);
-                startActivity(intent);
-                break;
+                levelselect=7;
+                icon=R.string.icon_plus;
             case "21":
-                //   Intent intent = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_feed));
-                intent.putExtra("levelNo", (Integer) 18);
-                startActivity(intent);
+                levelselect=8;
+                icon=R.string.icon_plus;
                 break;
             case "22":
-                //tent intent6 = new Intent(Lev.this, Game.class);
-                intent.putExtra("item", getString(R.string.icon_cloud));
-                startActivity(intent);
-                intent.putExtra("levelNo", (Integer) 20);
+                levelselect=9;
+                icon=R.string.icon_plus;
                 break;
 
         }
-    }
+              /*
+            int stars=0;
+            int levelNo=0;
+            try {
+                stars = Integer.parseInt(sp.Get("stars").toString());
+                levelNo = Integer.parseInt(sp.Get("levelNo").toString());
+                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+sp.Get("stars"));
+                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+sp.Get("levelNo"));
+            }catch(NumberFormatException nfe)
+            {
+
+            }
+
+            if ((stars>2 && levelselect ==levelNo-1) || levelselect==1 )
+            {
+                if (levelselect!=1)
+                {
+                    sp.Set("stars",Integer.toString(stars-2));
+
+                }
+                Intent intent = new Intent(Lev.this, Game.class);
+                levelselect=levelselect*2;
+                intent.putExtra("levelNo", (Integer)levelselect);
+                startActivity(intent);
+            }*/
+            if(true)
+            {
+                Intent intent = new Intent(Lev.this, Game.class);
+                levelselect=levelselect*2;
+                intent.putExtra("levelNo", (Integer)levelselect);
+                startActivity(intent);
+            }
+
+     }
     }
 
     private void requestNewInterstitial() {

@@ -2,9 +2,11 @@ package com.myapp.mehrnaz.appapp;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.appinvite.AppInviteInvitation;
 
 // This is mainpage
 public class NavigationDrawer extends AppCompatActivity
@@ -49,7 +52,7 @@ public class NavigationDrawer extends AppCompatActivity
     TextView txtSq3Bg;
 
     private AdView mAdView;
-
+    private static final int REQUEST_INVITE = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,6 +174,30 @@ public class NavigationDrawer extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+         /*
+            //share section start
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("invite", "onActivityResult: requestCode=" + requestCode + ", resultCode=" + resultCode);
+
+        if (requestCode == REQUEST_INVITE) {
+            if (resultCode == RESULT_OK) {
+                // Get the invitation IDs of all sent messages
+                String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
+                for (String id : ids) {
+                    Log.d("invite", "onActivityResult: sent invitation " + id);
+                }
+            } else {
+                // Sending failed or it was canceled, show failure message to the user
+                // ...
+            }
+        }
+    }
+    //share section end
+*/
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -187,6 +214,17 @@ public class NavigationDrawer extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
+            /*
+            //share section start
+            Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
+                    .setMessage(getString(R.string.invitation_message))
+                    .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
+                    .setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
+                    .setCallToActionText(getString(R.string.invitation_cta))
+                    .build();
+            startActivityForResult(intent, REQUEST_INVITE);
+            //share esection end
+            */
         } else if (id == R.id.nav_send) {
 
         }
