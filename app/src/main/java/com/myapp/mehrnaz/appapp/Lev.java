@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+
 /**
  * Created by Mehrnaz on 1/21/2017.
  */
@@ -21,7 +23,7 @@ public class Lev extends Activity {
     private LinearLayout container;
     private String vGatTag;
     InterstitialAd mInterstitialAd;
-    SharedPre sp;
+
 
     //az icon play baraye mosalasha estfade shode
 
@@ -45,8 +47,19 @@ public class Lev extends Activity {
 
 
         draw(getResources().getStringArray(R.array.type), 3);
-        sp = new SharedPre(getApplicationContext());
-//full screen adsMob start
+
+        //HT 748
+        int winStars= getIntent().getIntExtra("winStars", 0);
+        Log.i("response", "winStars:"+winStars);
+        if (winStars!=0)
+        {
+            CharSequence text = "You Win , " + winStars + " Stars";
+            Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+            toast.show();
+            onCreate(Bundle.EMPTY);
+        }
+
+        //full screen adsMob start
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.setAdListener(new AdListener() {
@@ -94,6 +107,7 @@ public class Lev extends Activity {
             }
         }
     }
+
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -111,68 +125,75 @@ public class Lev extends Activity {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
-            switch (in) {
-                case "00":
-                    Log.i("goneToGame()", "case 00");
-                    levelselect=1;
-                    icon=R.string.icon_plus;
+        switch (in) {
+            case "00":
+                Log.i("goneToGame()", "case 00");
+                levelselect=1;
+                icon=R.string.icon_plus;
 
-                    break;
-                case "01":
-                    Log.i("goneToGame()", "case 01");
-                    levelselect=2;
-                    icon=R.string.icon_plus;
-                    break;
-                case "02":
-                    Log.i("goneToGame()", "case 02");
-                    levelselect=3;
-                    icon=R.string.icon_plus;
-                    break;
-                case "10":
-                    Log.i("goneToGame()", "case 03");
-                    levelselect=4;
-                    icon=R.string.icon_plus;
-                    break;
-                case "11":
-                    Log.i("goneToGame()", "case 04");
-                    levelselect=5;
-                    icon=R.string.icon_plus;
-                    break;
-                case "12":
-                    Log.i("goneToGame()", "case 05");
-                    levelselect=6;
-                    icon=R.string.icon_plus;
-                    break;
-                case "20":
-                    Log.i("goneToGame()", "case 06");
-                    levelselect=7;
-                    icon=R.string.icon_plus;
-                case "21":
-                    levelselect=8;
-                    icon=R.string.icon_plus;
-                    break;
-                case "22":
-                    levelselect=9;
-                    icon=R.string.icon_plus;
-                    break;
+                break;
+            case "01":
+                Log.i("goneToGame()", "case 01");
+                levelselect=2;
+                icon=R.string.icon_plus;
+                break;
+            case "02":
+                Log.i("goneToGame()", "case 02");
+                levelselect=3;
+                icon=R.string.icon_plus;
+                break;
+            case "10":
+                Log.i("goneToGame()", "case 03");
+                levelselect=4;
+                icon=R.string.icon_plus;
+                break;
+            case "11":
+                Log.i("goneToGame()", "case 04");
+                levelselect=5;
+                icon=R.string.icon_plus;
+                break;
+            case "12":
+                Log.i("goneToGame()", "case 05");
+                levelselect=6;
+                icon=R.string.icon_plus;
+                break;
+            case "20":
+                Log.i("goneToGame()", "case 06");
+                levelselect=7;
+                icon=R.string.icon_plus;
+            case "21":
+                levelselect=8;
+                icon=R.string.icon_plus;
+                break;
+            case "22":
+                levelselect=9;
+                icon=R.string.icon_plus;
+                break;
 
-            }
-              /*
+        }
             int stars=0;
             int levelNo=0;
             try {
+                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>try in");
+                SharedPre sp = new SharedPre(getApplicationContext());
                 stars = Integer.parseInt(sp.Get("stars").toString());
                 levelNo = Integer.parseInt(sp.Get("levelNo").toString());
-                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+sp.Get("stars"));
-                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+sp.Get("levelNo"));
+                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+stars);
+                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+ levelNo);
+                if (levelNo==400400400) {levelNo=1;}
+                if (stars==400400400) {stars=0;}
             }catch(NumberFormatException nfe)
             {
+
             }
+
+            /*
             if ((stars>2 && levelselect ==levelNo-1) || levelselect==1 )
             {
                 if (levelselect!=1)
                 {
                     sp.Set("stars",Integer.toString(stars-2));
+
                 }
                 Intent intent = new Intent(Lev.this, Game.class);
                 levelselect=levelselect*2;

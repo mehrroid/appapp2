@@ -2,6 +2,7 @@ package com.myapp.mehrnaz.appapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -65,9 +66,12 @@ public class Game extends Activity {
 	private int turns;
 	private TableLayout mainTable;
 	private UpdateCardsHandler handler;
-	//H>T added End
+	SharedPre sp;
+	int levelNo;
 
-	protected void onCreate(Bundle savedInstanceState) {
+	//H>T added End
+	
+    protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_layout);
@@ -81,13 +85,13 @@ public class Game extends Activity {
 		//HT added
 		handler = new UpdateCardsHandler();
 		buttonListener = new ButtonListener();
-		font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
-		int levelNo = getIntent().getIntExtra("levelNo", 0);
+        font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+        levelNo = getIntent().getIntExtra("levelNo", 0);
 		Log.i("loadCards()","levelNo=" + levelNo);
-		mainTable = (TableLayout)findViewById(R.id.TableLayout03);
-		context  = mainTable.getContext();
-
-		newGame(levelNo);
+        mainTable = (TableLayout)findViewById(R.id.TableLayout03);
+        context  = mainTable.getContext();
+		sp = new SharedPre(getApplicationContext());
+        newGame(levelNo);
 
 
 
@@ -150,9 +154,9 @@ public class Game extends Activity {
 		}
 		Log.i("getRowAndCol()","A=" + a);
 		Log.i("getRowAndCol()","B=" + b);
-		return b;
-	}
-
+        return b;
+    }
+    
 	private void loadCards(){
 		try{
 			winCard=0;
@@ -299,7 +303,7 @@ public class Game extends Activity {
 					public void run() {
 						try{
 							synchronized (lock) {
-								handler.sendEmptyMessage(0);
+							  handler.sendEmptyMessage(0);
 							}
 						}
 						catch (Exception e) {
@@ -307,55 +311,55 @@ public class Game extends Activity {
 						}
 					}
 				};
-
-				Timer t = new Timer(false);
-				t.schedule(tt, 1300);
+				
+				  Timer t = new Timer(false);
+			        t.schedule(tt, 1300);
 			}
+		   }
+			
 		}
+    
+    class UpdateCardsHandler extends Handler{
+    	
+    	@Override
+    	public void handleMessage(Message msg) {
+    		synchronized (lock) {
+    			checkCards();
+    		}
+    	}
+    	 public void checkCards(){
+    	    	if(cards[seconedCard.x][seconedCard.y] == cards[firstCard.x][firstCard.y]){
+    				firstCard.button.setVisibility(View.INVISIBLE);
+    				seconedCard.button.setVisibility(View.INVISIBLE);
+					winCard +=1;
 
-	}
+					if (winCard==size/2)
+					{
+						//gets
+						CharSequence text = "You Win " + getStar() + " Star";
+						Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+						toast.show();
+						onCreate(Bundle.EMPTY);
+					}
 
-	class UpdateCardsHandler extends Handler{
+    			}
+    			else {
+    				//seconedCard.button.setBackgroundDrawable(null);
+    				//firstCard.button.setBackgroundDrawable(null);
 
-		@Override
-		public void handleMessage(Message msg) {
-			synchronized (lock) {
-				checkCards();
-			}
-		}
-		public void checkCards(){
-			if(cards[seconedCard.x][seconedCard.y] == cards[firstCard.x][firstCard.y]){
-				firstCard.button.setVisibility(View.INVISIBLE);
-				seconedCard.button.setVisibility(View.INVISIBLE);
-				winCard +=1;
-
-				if (winCard==size/2)
-				{
-					//gets
-					CharSequence text = "You Win " + getStar() + " Star";
-					Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
-					toast.show();
-					onCreate(Bundle.EMPTY);
-				}
-
-			}
-			else {
-				//seconedCard.button.setBackgroundDrawable(null);
-				//firstCard.button.setBackgroundDrawable(null);
-
-				seconedCard.button.setTextColor(Color.GRAY);
-				seconedCard.button.setText("\uf04d");
-				seconedCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
+					seconedCard.button.setTextColor(Color.GRAY);
+					seconedCard.button.setText("\uf04d");
+					seconedCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
 
 
-				firstCard.button.setTextColor(Color.GRAY);
-				firstCard.button.setText("\uf04d");
-				firstCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
-			}
-
-			firstCard=null;
-			seconedCard=null;
-		}
+					firstCard.button.setTextColor(Color.GRAY);
+					firstCard.button.setText("\uf04d");
+					firstCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
+    			}
+    	    	
+    	    	firstCard=null;
+    			seconedCard=null;
+    	    }
 
 		public int getStar ()
 		{
@@ -368,10 +372,10 @@ public class Game extends Activity {
 			if (turns>= (size*(sizeDiv2)) &&turns<= (size*((sizeDiv2)-sizeDiv2-3) ))
 			{return 1;}
 			else
-				return 0;
+			return 0;
 		}
-	}
-
-
-	//*/
+    }
+    
+   
+    //*/
 }

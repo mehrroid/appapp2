@@ -3,6 +3,7 @@ package com.myapp.mehrnaz.appapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 /**
  * Created by hassan on 6/19/2015.
@@ -29,8 +30,9 @@ public class SharedPre {
     public String Get (String nameIn)
     {
         //return value of nameIn
+        Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>sp.Get()");
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-        return settings.getString(nameIn, "_WD_0");
+        return settings.getString(nameIn, "400400400400");
     }
 	// یاز به داشتن نام اش هست و اگر حذف کند مقدار
    public boolean Remove (String nameIn)
@@ -107,7 +109,7 @@ public class SharedPre {
         for (int i=idFather ; i>=0 ; i--)
         {
             String get=Get(String.valueOf(idFather));
-            if (get=="_WD_0")
+            if (get=="400400400")
             {
                 i--;
             }
