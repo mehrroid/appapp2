@@ -18,7 +18,6 @@ public class Splash_Screen extends Activity {
     Typeface font;
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 10000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +26,6 @@ public class Splash_Screen extends Activity {
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
         txtLoading.setTypeface(font);
         caller();
-
     }
     private  void  caller()
     {

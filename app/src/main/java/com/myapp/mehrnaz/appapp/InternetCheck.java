@@ -15,19 +15,7 @@ public class InternetCheck {
 
 
     public boolean NetworkConnection(Context context) {
-             /*
-        Log.i("response", "NetworkConnection()");
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
 
-        if (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isAvailable() && cm.getActiveNetworkInfo().isConnected()) {
-            Log.i("response", "NetworkConnection():true");
-            return true;
-
-        } else {
-            Log.i("response", "NetworkConnection():false");
-            return false;
-        }
-   */
         Log.i("response", "NetworkConnection()");
         boolean haveConnectedWifi = false;
         boolean haveConnectedMobile = false;
