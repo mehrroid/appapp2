@@ -6,12 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+
 
 /**
  * Created by Mehrnaz on 1/27/2017.
  */
 
 public class starFragment extends Fragment {
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

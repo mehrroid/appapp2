@@ -8,6 +8,8 @@ import android.os.Bundle;
  */
 
 public class Star extends Activity {
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.star_layout);

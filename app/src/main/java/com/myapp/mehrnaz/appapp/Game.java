@@ -76,7 +76,7 @@ public class Game extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_layout);
 		Typeface font2=Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
-		Button btnfooter= (Button) findViewById(R.id.btnfooter);
+
 
 		txtIconStar = (TextView) findViewById(R.id.txtstar);
 		txtIconStar.setTypeface(font2);

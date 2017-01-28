@@ -1,0 +1,48 @@
+package com.myapp.mehrnaz.appapp;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
+
+import static android.content.Context.CONNECTIVITY_SERVICE;
+
+/**
+ * Created by nixan on 28/01/2017.
+ */
+
+public class InternetCheck {
+
+
+    public boolean NetworkConnection(Context context) {
+             /*
+        Log.i("response", "NetworkConnection()");
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+
+        if (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isAvailable() && cm.getActiveNetworkInfo().isConnected()) {
+            Log.i("response", "NetworkConnection():true");
+            return true;
+
+        } else {
+            Log.i("response", "NetworkConnection():false");
+            return false;
+        }
+   */
+        Log.i("response", "NetworkConnection()");
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        Log.i("response", "return:"+haveConnectedWifi+"  "+haveConnectedMobile);
+        return haveConnectedWifi || haveConnectedMobile;
+
+    }
+}

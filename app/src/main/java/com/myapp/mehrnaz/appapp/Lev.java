@@ -36,7 +36,7 @@ public class Lev extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level);
         container = (android.widget.LinearLayout) findViewById(R.id.activity_main);
-        Button btnfooter = (Button) findViewById(R.id.btnfooter);
+
 
         Typeface font2 = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 //items of header
