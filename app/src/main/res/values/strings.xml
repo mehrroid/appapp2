@@ -14,6 +14,10 @@
     <string name="icon_heart">&#xf1ee;</string>
     <string name="icon_triangle"> &#xf071;</string>
     <string name="icon_spinner">&#xf110;</string>
+    <string name="icon_game">&#xf11b;</string>
+    <string name="icon_sq">&#xf0c8;</string>
+
+
 
     <string name="icon_play">&#xf04b;</string>
     <string name="icon_wifi">&#xf1eb;</string>
@@ -43,6 +47,9 @@
     <string name="invitation_deep_link">https://goo.gl/ZpfMfs</string>
     <string name="invitation_custom_image">https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png</string>
     <string name="invitation_cta">Install</string>
-
+    <string name="profile">PROFILE</string>
+    <string name="feed">FEED</string>
+    <string name="activity">ACTIVITY</string>
+    <string name="settings">SETTINGS</string>
 
 </resources>

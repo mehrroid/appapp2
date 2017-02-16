@@ -20,6 +20,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -54,6 +56,7 @@ public class Game extends Activity {
 	private static int ROW_COUNT = -1;
 	private static int COL_COUNT = -1;
 	private Context context;
+	private AdView mAdView;
 
 	private int [] [] cards;
 	private  int winCard;
@@ -76,12 +79,16 @@ public class Game extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_layout);
 		Typeface font2=Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+		TextView txtg= (TextView) findViewById(R.id.game);
+		txtg.setTypeface(font2);
+		TextView txtsq1= (TextView) findViewById(R.id.sqbg);
+		TextView txtstar= (TextView) findViewById(R.id.star);
+		txtstar.setTypeface(font2);
 
-
-		txtIconStar = (TextView) findViewById(R.id.txtstar);
-		txtIconStar.setTypeface(font2);
-		txtStarBg = (TextView) findViewById(R.id.txtstarbg);
-		txtStarBg.setTypeface(font2);
+//		txtIconStar = (TextView) findViewById(R.id.txtstar);
+//		txtIconStar.setTypeface(font2);
+//		txtStarBg = (TextView) findViewById(R.id.txtstarbg);
+//		txtStarBg.setTypeface(font2);
 		//HT added
 		handler = new UpdateCardsHandler();
 		buttonListener = new ButtonListener();
@@ -115,7 +122,9 @@ public class Game extends Activity {
 		rtrn = rndm.Fisher3(CCount);
 
 		cards = new int [COL_COUNT] [ROW_COUNT];
-
+		mAdView = (AdView) findViewById(R.id.adView);
+		AdRequest adRequest = new AdRequest.Builder().build();
+		mAdView.loadAd(adRequest);
 
 
 
@@ -223,7 +232,7 @@ public class Game extends Activity {
 		button.setBackgroundDrawable(null);
 		Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 		button.setTypeface(fontawsome);
-		button.setTextColor(Color.GRAY);
+		button.setTextColor(Color.WHITE);
 
 		//button.setText("\uf04d");
 		button.setText(R.string.icon_cloud);

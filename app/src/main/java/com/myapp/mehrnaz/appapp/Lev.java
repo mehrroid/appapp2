@@ -1,6 +1,7 @@
 package com.myapp.mehrnaz.appapp;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 /**
@@ -23,7 +25,7 @@ public class Lev extends Activity {
     private LinearLayout container;
     private String vGatTag;
     InterstitialAd mInterstitialAd;
-
+    private AdView mAdView;
 
     //az icon play baraye mosalasha estfade shode
 
@@ -40,12 +42,19 @@ public class Lev extends Activity {
 
         Typeface font2 = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 //items of header
-        txtIconStar = (TextView) findViewById(R.id.txtstar);
-        txtIconStar.setTypeface(font2);
-        txtStarBg = (TextView) findViewById(R.id.txtstarbg);
-        txtStarBg.setTypeface(font2);
+        TextView txtg= (TextView) findViewById(R.id.game);
+        txtg.setTypeface(font2);
+        TextView txtsq1= (TextView) findViewById(R.id.sqbg);
+        TextView txtstar= (TextView) findViewById(R.id.star);
+        txtstar.setTypeface(font2);
+//        txtIconStar = (TextView) findViewById(R.id.txtstar);
+//        txtIconStar.setTypeface(font2);
+//        txtStarBg = (TextView) findViewById(R.id.txtstarbg);
+//        txtStarBg.setTypeface(font2);
 
-
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         draw(getResources().getStringArray(R.array.type), 3);
 
         //HT 748
@@ -100,8 +109,9 @@ public class Lev extends Activity {
                 card.setGravity(Gravity.CENTER);
                 card.setLayoutParams(params);
                 card.setTag(i +""+ j);
-                card.setBackgroundResource(R.color.colorCloud);
+                card.setBackgroundResource(R.color.darkblue);
                 ll.addView(card);
+                card.setTextColor(Color.WHITE);
                 card.setOnClickListener(clickListener);
                 index++;
             }
