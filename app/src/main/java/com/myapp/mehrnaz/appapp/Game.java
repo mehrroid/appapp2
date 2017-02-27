@@ -120,7 +120,7 @@ public class Game extends Activity {
 		final int[] checkPaper = new int[CCount];
 		ClassRandom rndm = new ClassRandom();
 		rtrn = rndm.Fisher3(CCount);
-
+		Log.i("newGame()","COL_COUNT=" +rtrn);
 		cards = new int [COL_COUNT] [ROW_COUNT];
 		mAdView = (AdView) findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.Builder().build();
@@ -190,13 +190,13 @@ public class Game extends Activity {
 				}
 
 				t=list.remove(t).intValue();
-				/*
-	    		cards[rtrn[i][0]%COL_COUNT][rtrn[i][0]/COL_COUNT]=rtrn[i][1];
+
+	    		cards[rtrn[i][0]%COL_COUNT][rtrn[i][0]/COL_COUNT]=rtrn[t][1];
 
 	    		Log.i("loadCards()", "card["+(i%COL_COUNT)+
-	    				"]["+(i/COL_COUNT)+"]=" + cards[i%COL_COUNT][i/COL_COUNT]);*/
+	    				"]["+(i/COL_COUNT)+"]=" + cards[i%COL_COUNT][i/COL_COUNT]);
 			}
-
+/*
 			for (int i=0; i<ROW_COUNT ; i++)
 			{
 				for (int z=0  ; z<COL_COUNT ; z++)
@@ -208,6 +208,7 @@ public class Game extends Activity {
 
 				}
 			}
+			*/
 
 		}
 		catch (Exception e) {

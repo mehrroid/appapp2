@@ -109,7 +109,7 @@ public class Lev extends Activity {
                 card.setGravity(Gravity.CENTER);
                 card.setLayoutParams(params);
                 card.setTag(i +""+ j);
-                card.setBackgroundResource(R.color.darkblue);
+                card.setBackgroundResource(R.color.colorCloud);
                 ll.addView(card);
                 card.setTextColor(Color.WHITE);
                 card.setOnClickListener(clickListener);
