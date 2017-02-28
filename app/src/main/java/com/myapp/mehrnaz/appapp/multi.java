@@ -3,6 +3,8 @@ package com.myapp.mehrnaz.appapp;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Vibrator;
 
@@ -14,16 +16,18 @@ public class multi {
 	{
 		if (check==true)
 		{
+
 			//in==1 short || in==2 long ||....
 			Vibrator v = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
 			 switch (in)
 				   {
 					   case 1:
-							v.vibrate(400);
+						   long[] pattern = {0, 1, 0};
+							v.vibrate(pattern,0);
 						   break;
 					   case 2:
-							long[] pattern = {0, 100, 1000};
-							v.vibrate(pattern, 0);
+							long[] pattern2 = {0, 100, 1000};
+							v.vibrate(pattern2,0);
 						   break;
 				   }
 		}
@@ -39,32 +43,16 @@ public class multi {
 	{
 		if (check==true)
 		{
-			String path="file:///sdcard/Songs/ARR Hits/hosannatamil.mp3";
-			   // Even you can refer resource in res/raw directory
-			//Uri myUri = Uri.parse("android.resource://com.prgguru.example/" + R.raw.hosannatamil); 
-			Uri myUri1 = Uri.parse(path);
-			MediaPlayer	mPlayer = new MediaPlayer();
-			mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-			try {
-				mPlayer.setDataSource(context, myUri1);
-			} catch (IllegalArgumentException e) {
-				//Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-			} catch (SecurityException e) {
-				//Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-			} catch (IllegalStateException e) {
-				//Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-			} catch (IOException e) {
-				e.printStackTrace();
+
+				try {
+					Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+					Ringtone r = RingtoneManager.getRingtone(context, notification);
+					r.play();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			try {
-				mPlayer.prepare();
-			} catch (IllegalStateException e) {
-			//	Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-			} catch (IOException e) {
-			//	Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
-			}
-			mPlayer.start();
-		}
+
 	}
 	
 	

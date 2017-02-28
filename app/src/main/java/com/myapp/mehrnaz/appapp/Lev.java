@@ -129,7 +129,8 @@ public class Lev extends Activity {
     };
 
     private void playingGame(String in) {
-
+        multi mlt = new multi();
+        mlt.VibrationStart(1,getApplicationContext(),true);
         int levelselect=0;
         int icon;
         if (mInterstitialAd.isLoaded()) {
