@@ -47,6 +47,9 @@ public class Lev extends Activity {
         TextView txtsq1= (TextView) findViewById(R.id.sqbg);
         TextView txtstar= (TextView) findViewById(R.id.star);
         txtstar.setTypeface(font2);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+        TextView plus = (TextView) findViewById(R.id.pl);
+        plus.setTypeface(font);
 //        txtIconStar = (TextView) findViewById(R.id.txtstar);
 //        txtIconStar.setTypeface(font2);
 //        txtStarBg = (TextView) findViewById(R.id.txtstarbg);
@@ -93,6 +96,8 @@ public class Lev extends Activity {
             LinearLayout ll = new LinearLayout(Lev.this);
             LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
             ll.setWeightSum(6);
+            ll.setGravity(Gravity.CENTER);
+
             ll.setOrientation(android.widget.LinearLayout.HORIZONTAL);
             ll.setLayoutParams(llParams);
             container.addView(ll);
@@ -102,6 +107,7 @@ public class Lev extends Activity {
                 params.weight = 1;
                 TextView card = new TextView(Lev.this);
                 Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+
                 card.setText(strs[index]);
                 card.setTypeface(font);
                 card.setTextSize(40);
@@ -109,7 +115,7 @@ public class Lev extends Activity {
                 card.setGravity(Gravity.CENTER);
                 card.setLayoutParams(params);
                 card.setTag(i +""+ j);
-                card.setBackgroundResource(R.color.colorCloud);
+                card.setBackgroundResource(R.color.darkblue);
                 ll.addView(card);
                 card.setTextColor(Color.WHITE);
                 card.setOnClickListener(clickListener);
@@ -141,7 +147,7 @@ public class Lev extends Activity {
             case "00":
                 Log.i("goneToGame()", "case 00");
                 levelselect=1;
-                icon=R.string.icon_glass;
+                icon=R.string.icon_plus;
 
                 break;
             case "01":
@@ -154,6 +160,7 @@ public class Lev extends Activity {
                 levelselect=3;
                 icon=R.string.icon_plus;
                 break;
+
             case "10":
                 Log.i("goneToGame()", "case 03");
                 levelselect=4;
@@ -179,6 +186,15 @@ public class Lev extends Activity {
                 break;
             case "22":
                 levelselect=9;
+                icon=R.string.icon_plus;
+                break;
+
+            case "31":
+                levelselect=10;
+                icon=R.string.icon_plus;
+                break;
+            case "32":
+                levelselect=11;
                 icon=R.string.icon_plus;
                 break;
 

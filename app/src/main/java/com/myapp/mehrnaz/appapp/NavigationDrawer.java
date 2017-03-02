@@ -60,7 +60,7 @@ public class NavigationDrawer extends AppCompatActivity
     TextView txtcloud2;
     TextView txtcloud3;
     TextView txtcloud4;
-//    TextView userPlusbg;
+     TextView plus;
     TextView txtSq2Bg;
     TextView txtSq3Bg;
     private AdView mAdView;
@@ -114,6 +114,13 @@ public class NavigationDrawer extends AppCompatActivity
 //        txtIconPlay4.setTypeface(font);
         txtIconSetting = (TextView) findViewById(R.id.txtIconSetting);
         txtIconSetting.setTypeface(font);
+        txtIconSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(NavigationDrawer.this,Setting.class);
+                startActivity(i);
+            }
+        });
         txtIconUser = (TextView) findViewById(R.id.txtIconUser);
         txtIconUser.setTypeface(font);
         txtIconPlay = (TextView) findViewById(R.id.txtIconPlay);
@@ -140,8 +147,8 @@ public class NavigationDrawer extends AppCompatActivity
 //        txtIconMenuBg.setTypeface(font);
 //        txtIconSquare = (TextView) findViewById(R.id.txtsquare);
 //        txtIconSquare.setTypeface(font);
-//        txtIconPlus = (TextView) findViewById(R.id.txtplus);
-//        txtIconPlus.setTypeface(font);
+        plus = (TextView) findViewById(R.id.pl);
+        plus.setTypeface(font);
 //        txtIconStar = (TextView) findViewById(R.id.txtstar);
 //        txtIconStar.setTypeface(font);
 //        txtStarBg = (TextView) findViewById(R.id.txtstarbg);
@@ -224,7 +231,7 @@ public class NavigationDrawer extends AppCompatActivity
                 TranslateAnimation.RELATIVE_TO_PARENT, 0.7f,
                 TranslateAnimation.ABSOLUTE, 0f,
                 TranslateAnimation.ABSOLUTE, 0f);
-        move.setDuration(2300);
+        move.setDuration(10000);
         move.setRepeatCount(-1);
         //move.setRepeatMode(Animation.REVERSE);
         move.setInterpolator(new LinearInterpolator());

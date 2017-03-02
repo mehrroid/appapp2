@@ -9,6 +9,15 @@
         <item>&#xf0c2;</item>
         <item>&#xf0c2;</item>
         <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
+        <item>&#xf0c2;</item>
     </string-array>
     <string name="app_name">gameApp</string>
     <string name="icon_heart">&#xf1ee;</string>
@@ -17,6 +26,7 @@
     <string name="icon_game">&#xf11b;</string>
     <string name="icon_sq">&#xf0c8;</string>
 
+    <string name="icon_lock">&#xf023;</string>
 
     <string name="icon_play">&#xf04b;</string>
     <string name="icon_wifi">&#xf1eb;</string>

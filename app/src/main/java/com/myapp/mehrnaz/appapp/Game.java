@@ -87,6 +87,8 @@ public class Game extends Activity {
 		TextView txtstar= (TextView) findViewById(R.id.star);
 		txtstar.setTypeface(font2);
 		sizeIcon=100;
+		TextView plus = (TextView) findViewById(R.id.pl);
+		plus.setTypeface(font);
 //		txtIconStar = (TextView) findViewById(R.id.txtstar);
 //		txtIconStar.setTypeface(font2);
 //		txtStarBg = (TextView) findViewById(R.id.txtstarbg);
@@ -319,11 +321,14 @@ public class Game extends Activity {
 		button.setBackgroundDrawable(null);
 		Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 		button.setTypeface(fontawsome);
+
 		button.setTextColor(Color.WHITE);
 
 
-		button.setText(icon);
-		button.setBackgroundResource(R.drawable.square);
+		//button.setText("\uf04d");
+
+		button.setText(R.string.icon_lock);
+		button.setBackgroundResource(R.drawable.circlebg);
 
 		//textView.setText("Hi");
 		//textView.setTextColor(Color.RED);
