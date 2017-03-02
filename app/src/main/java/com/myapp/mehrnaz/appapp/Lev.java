@@ -141,45 +141,45 @@ public class Lev extends Activity {
             case "00":
                 Log.i("goneToGame()", "case 00");
                 levelselect=1;
-                icon=R.string.icon_glass;
+
 
                 break;
             case "01":
                 Log.i("goneToGame()", "case 01");
                 levelselect=2;
-                icon=R.string.icon_plus;
+
                 break;
             case "02":
                 Log.i("goneToGame()", "case 02");
                 levelselect=3;
-                icon=R.string.icon_plus;
+
                 break;
             case "10":
                 Log.i("goneToGame()", "case 03");
                 levelselect=4;
-                icon=R.string.icon_plus;
+
                 break;
             case "11":
                 Log.i("goneToGame()", "case 04");
                 levelselect=5;
-                icon=R.string.icon_plus;
+
                 break;
             case "12":
                 Log.i("goneToGame()", "case 05");
                 levelselect=6;
-                icon=R.string.icon_plus;
+
                 break;
             case "20":
                 Log.i("goneToGame()", "case 06");
                 levelselect=7;
-                icon=R.string.icon_plus;
+
             case "21":
                 levelselect=8;
-                icon=R.string.icon_plus;
+
                 break;
             case "22":
                 levelselect=9;
-                icon=R.string.icon_plus;
+
                 break;
 
         }
