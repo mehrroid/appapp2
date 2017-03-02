@@ -433,9 +433,10 @@ public class Game extends Activity {
     				firstCard.button.setVisibility(View.INVISIBLE);
     				seconedCard.button.setVisibility(View.INVISIBLE);
 					winCard +=1;
-
+					Log.e("checkCards()", winCard+"");
 					if (winCard==size/2)
 					{
+						Log.e("checkCards()", "in if");
 						//gets
 						CharSequence text = "You Win " + getStar() + " Star";
 						Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
