@@ -83,6 +83,6 @@ android:layout_gravity="left"
       android:gravity="right"
       android:layout_marginRight="@dimen/_30sdp"
       android:textColor="@color/colorStars"
-      android:layout_marginTop="@dimen/_25sdp"
+      android:layout_marginTop="@dimen/_18sdp"
       android:layout_marginBottom="@dimen/_5sdp"/>
 </FrameLayout>

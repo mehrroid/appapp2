@@ -73,7 +73,7 @@ public class Lev extends Activity {
         AdRequest adRequest = new AdRequest.Builder().build();
 
         mAdView.loadAd(adRequest);
-        draw(getResources().getStringArray(R.array.type), 3);
+        draw(getResources().getStringArray(R.array.type), 5);
 
         //HT 748
         int winStars= getIntent().getIntExtra("Stars", 0);
@@ -121,21 +121,25 @@ public class Lev extends Activity {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
                 params.setMargins(5, 5, 5, 5);
                 params.weight = 1;
-                TextView card = new TextView(Lev.this);
+                Button card = new Button(Lev.this);
                 Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
                 card.setText(strs[index]);
                 card.setTypeface(font);
-                card.setTextSize(40);
+                card.setTextSize(30);
                 card.setPadding(5, 5, 5, 5);
                 card.setGravity(Gravity.CENTER);
                 card.setLayoutParams(params);
                 card.setTag(i +""+ j);
-                card.setBackgroundResource(R.color.darkblue);
+                card.setBackgroundResource(R.drawable.circle2);
 
                 ll.addView(card);
-                card.setTextColor(Color.WHITE);
+
+                card.setTextColor(R.color.gray);
                 card.setOnClickListener(clickListener);
                 index++;
+
+
+
             }
         }
     }
@@ -213,6 +217,7 @@ public class Lev extends Activity {
                 levelselect=11;
                 icon=R.string.icon_plus;
                 break;
+
 
         }
             

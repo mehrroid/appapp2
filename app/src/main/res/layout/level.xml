@@ -20,13 +20,13 @@
 
         tools:context="com.myapp.mehrnaz.appapp.Lev">
 
-        <TextView
-            android:id="@+id/cardicon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="@dimen/_45sdp" />
+        <!--<Button-->
+            <!--android:id="@+id/cardicon"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="@dimen/_45sdp" />-->
 
     </LinearLayout>
 

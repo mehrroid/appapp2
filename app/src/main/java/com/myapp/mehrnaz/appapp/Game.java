@@ -90,9 +90,9 @@ public class Game extends Activity {
 		TextView txtsq1= (TextView) findViewById(R.id.sqbg);
 		TextView txtstar= (TextView) findViewById(R.id.star);
 		txtstar.setTypeface(font2);
-		sizeIcon=100;
-//		TextView plus = (TextView) findViewById(R.id.pl);
-//		plus.setTypeface(font);
+		sizeIcon=60;
+		TextView plus = (TextView) findViewById(R.id.pl);
+		plus.setTypeface(font);
 //		txtIconStar = (TextView) findViewById(R.id.txtstar);
 //		txtIconStar.setTypeface(font2);
 //		txtStarBg = (TextView) findViewById(R.id.txtstarbg);
@@ -342,8 +342,8 @@ public class Game extends Activity {
 
 		//button.setText("\uf04d");
 
-		button.setText(R.string.icon_lock);
-		button.setBackgroundResource(R.drawable.circlebg);
+		button.setText(R.string.icon_cloud);
+		button.setBackgroundResource(R.drawable.square);
 
 		//textView.setText("Hi");
 		//textView.setTextColor(Color.RED);
