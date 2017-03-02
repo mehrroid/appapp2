@@ -285,7 +285,7 @@ public class NavigationDrawer extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            closed();
         }
     }
 
@@ -344,4 +344,10 @@ public class NavigationDrawer extends AppCompatActivity
         transaction.commit();
     }
 
+    public  void closed()
+    {
+        finish();
+        android.os.Process.killProcess(android.os.Process.myPid());
+        super.onDestroy();
+    }
 }

@@ -2,10 +2,12 @@ package com.myapp.mehrnaz.appapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
@@ -128,7 +130,7 @@ public class Game extends Activity {
 	private void newGame(int levelNo) {
 
 
-		String icons ;
+//		String icons ;
 		COL_COUNT =  getRowAndCol(levelNo);
 		ROW_COUNT =  levelNo/COL_COUNT ;
 
@@ -505,7 +507,43 @@ public class Game extends Activity {
 			return 0;
 		}
     }
-    
+
+
+	@Override
+	public void onBackPressed() {
+		try {
+			starsin=Integer.parseInt(sp.Get("stars").toString());
+			Log.e("sp.Get(stars)", starsin+"");
+
+		} catch(NumberFormatException nfe) {
+			//	System.out.println("Could not parse " + nfe);
+			starsin=0;
+		}
+		TextView tv1 = (TextView)findViewById(R.id.starsNo);
+		tv1.setText(Integer.toString(starsin));
+
+
+		AlertDialog.Builder dialog = new AlertDialog.Builder(Game.this);
+		dialog.setCancelable(false);
+		dialog.setTitle("Eixt Game");
+		dialog.setMessage("Do you want exit game?" );
+		dialog.setPositiveButton("Yest", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int id) {
+				Intent intent = new Intent(Game.this, Lev.class);
+				startActivity(intent);
+			}
+		})
+				.setNegativeButton("Cancel ", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//Action for "Cancel".
+					}
+				});
+
+		final AlertDialog alert = dialog.create();
+		alert.show();
+	}
    
     //*/
 }
