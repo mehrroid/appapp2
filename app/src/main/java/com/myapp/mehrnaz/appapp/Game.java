@@ -71,6 +71,8 @@ public class Game extends Activity {
 	private UpdateCardsHandler handler;
 	SharedPre sp;
 	int levelNo;
+	int icon;
+	int sizeIcon;
 
 	//H>T added End
 	
@@ -84,7 +86,7 @@ public class Game extends Activity {
 		TextView txtsq1= (TextView) findViewById(R.id.sqbg);
 		TextView txtstar= (TextView) findViewById(R.id.star);
 		txtstar.setTypeface(font2);
-
+		sizeIcon=100;
 //		txtIconStar = (TextView) findViewById(R.id.txtstar);
 //		txtIconStar.setTypeface(font2);
 //		txtStarBg = (TextView) findViewById(R.id.txtstarbg);
@@ -109,16 +111,100 @@ public class Game extends Activity {
 	// /*
 	private void newGame(int levelNo) {
 
-		Log.i("newGame()","levelNo=" + getRowAndCol(levelNo));
-		Log.i("newGame()","levelNo/getRowAndCol=" + levelNo/getRowAndCol(levelNo));
+
+		String icons ;
 		COL_COUNT =  getRowAndCol(levelNo);
 		ROW_COUNT =  levelNo/COL_COUNT ;
 
-		Log.i("newGame()","COL_COUNT=" +COL_COUNT);
 		int CCount = (ROW_COUNT*COL_COUNT) ;
-
 		final int[] checkPaper = new int[CCount];
 		ClassRandom rndm = new ClassRandom();
+
+		switch (levelNo) {
+			case 1:
+				Log.i("goneToGame()", "case 00");
+				icon=R.string.icon_glass;
+
+				break;
+			case 2:
+				Log.i("goneToGame()", "case 01");
+				icon=R.string.icon_globe;
+				break;
+			case 3:
+				Log.i("goneToGame()", "case 02");
+				icon=R.string.icon_glass;
+				break;
+			case 4:
+				Log.i("goneToGame()", "case 03");
+				icon=R.string.icon_gratipay;
+				break;
+			case 5:
+				Log.i("goneToGame()", "case 04");
+				icon=R.string.icon_glass;
+				break;
+			case 6:
+				Log.i("goneToGame()", "case 05");
+				icon=R.string.icon_globe;
+				break;
+			case 7:
+				Log.i("goneToGame()", "case 06");
+				icon=R.string.icon_gratipay;
+			case 8:
+				icon=R.string.icon_plus;
+				break;
+			case 9:
+				icon=R.string.icon_plus;
+				break;
+			case 10:
+				icon=R.string.icon_plus;
+				break;
+			case 11:
+				icon=R.string.icon_plus;
+				break;
+			case 12:
+				icon=R.string.icon_plus;
+				break;
+			case 13:
+				icon=R.string.icon_plus;
+				break;
+			case 14:
+				icon=R.string.icon_plus;
+				break;
+			case 15:
+				icon=R.string.icon_plus;
+				break;
+			case 16:
+				icon=R.string.icon_plus;
+				break;
+			case 17:
+				icon=R.string.icon_plus;
+				break;
+			case 18:
+				icon=R.string.icon_plus;
+				break;
+			case 19:
+				icon=R.string.icon_plus;
+				break;
+			case 20:
+				icon=R.string.icon_plus;
+				break;
+			case 21:
+				icon=R.string.icon_plus;
+				break;
+			case 22:
+				icon=R.string.icon_plus;
+				break;
+			case 23:
+				icon=R.string.icon_plus;
+				break;
+			case 24:
+				icon=R.string.icon_plus;
+				break;
+			case 25:
+				icon=R.string.icon_plus;
+				break;
+
+		}
 		rtrn = rndm.Fisher3(CCount);
 		Log.i("newGame()","COL_COUNT=" +rtrn);
 		cards = new int [COL_COUNT] [ROW_COUNT];
@@ -235,14 +321,14 @@ public class Game extends Activity {
 		button.setTypeface(fontawsome);
 		button.setTextColor(Color.WHITE);
 
-		//button.setText("\uf04d");
-		button.setText(R.string.icon_cloud);
+
+		button.setText(icon);
 		button.setBackgroundResource(R.drawable.square);
 
 		//textView.setText("Hi");
 		//textView.setTextColor(Color.RED);
 
-		button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 100);
+		button.setTextSize(TypedValue.COMPLEX_UNIT_PX, sizeIcon);
 		button.setId(100*x+y);
 		button.setOnClickListener(buttonListener);
 		/* H.T E
@@ -284,10 +370,10 @@ public class Game extends Activity {
 					"]["+(y)+"]=" + cards[x][y]);
 			Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 			button.setTypeface(fontawsome);
-			button.setTextColor(Color.GREEN);
+			button.setTextColor(Color.YELLOW);
 			String s = Character.toString((char) cards[x][y]);
 			button.setText(s);
-			button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 45);
+			button.setTextSize(TypedValue.COMPLEX_UNIT_PX, sizeIcon);
 			final Animation myAnim = AnimationUtils.loadAnimation(Game.this, R.anim.anim2);
 			button.startAnimation(myAnim);
 
@@ -357,14 +443,14 @@ public class Game extends Activity {
     				//seconedCard.button.setBackgroundDrawable(null);
     				//firstCard.button.setBackgroundDrawable(null);
 
-					seconedCard.button.setTextColor(Color.GRAY);
-					seconedCard.button.setText("\uf04d");
-					seconedCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
+					seconedCard.button.setTextColor(Color.WHITE);
+					seconedCard.button.setText(icon);
+					seconedCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, sizeIcon);
 
 
-					firstCard.button.setTextColor(Color.GRAY);
-					firstCard.button.setText("\uf04d");
-					firstCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, 35);
+					firstCard.button.setTextColor(Color.WHITE);
+					firstCard.button.setText(icon);
+					firstCard.button.setTextSize(TypedValue.COMPLEX_UNIT_PX, sizeIcon);
     			}
     	    	
     	    	firstCard=null;

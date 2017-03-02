@@ -18,7 +18,6 @@
     <string name="icon_sq">&#xf0c8;</string>
 
 
-
     <string name="icon_play">&#xf04b;</string>
     <string name="icon_wifi">&#xf1eb;</string>
     <string name="icon_user">&#xf2be;</string>
@@ -32,6 +31,10 @@
     <string name="icon_plus">&#xf067;</string>
     <string name="icon_square">&#xf04d;</string>
     <string name="icon_cloud">&#xf0c2;</string>
+
+    <string name="icon_glass">&#xf000;</string>
+    <string name="icon_globe">&#xf0ac;</string>
+    <string name="icon_gratipay">&#xf184;</string>
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -44,12 +47,13 @@
 
     <string name="invitation_title">Invite title</string>
     <string name="invitation_message">Invite message lololololo </string>
-    <string name="invitation_deep_link">https://goo.gl/ZpfMfs</string>
-    <string name="invitation_custom_image">https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png</string>
+    <string name="invitation_deep_link">https://k3svr.app.goo.gl/TPlw</string>
+    <string name="invitation_custom_image">http://whitedevs.com/wp-content/uploads/2016/02/whiteDevs-logo.png</string>
     <string name="invitation_cta">Install</string>
     <string name="profile">PROFILE</string>
     <string name="feed">FEED</string>
     <string name="activity">ACTIVITY</string>
     <string name="settings">SETTINGS</string>
+    <string name="title_activity_app_invite_invitation">AppInviteInvitation</string>
 
 </resources>

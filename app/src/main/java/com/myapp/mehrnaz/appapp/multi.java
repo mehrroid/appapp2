@@ -22,9 +22,21 @@ public class multi {
 			 switch (in)
 				   {
 					   case 1:
-						   v.vibrate(400);
+						   v.vibrate(100);
 						   break;
 					   case 2:
+						   v.vibrate(200);
+						   break;
+					   case 3:
+						   v.vibrate(300);
+						   break;
+					   case 4:
+						   v.vibrate(400);
+						   break;
+					   case 5:
+						   v.vibrate(500);
+						   break;
+					   case 10:
 							long[] pattern2 = {0, 100, 1000};
 							v.vibrate(pattern2,1);
 						   break;

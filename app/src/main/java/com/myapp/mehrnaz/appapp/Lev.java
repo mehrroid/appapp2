@@ -130,9 +130,10 @@ public class Lev extends Activity {
 
     private void playingGame(String in) {
         multi mlt = new multi();
+        int icon;
         mlt.VibrationStart(1,getApplicationContext(),true);
         int levelselect=0;
-        int icon;
+
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
@@ -140,7 +141,7 @@ public class Lev extends Activity {
             case "00":
                 Log.i("goneToGame()", "case 00");
                 levelselect=1;
-                icon=R.string.icon_plus;
+                icon=R.string.icon_glass;
 
                 break;
             case "01":
@@ -216,6 +217,7 @@ public class Lev extends Activity {
                 Intent intent = new Intent(Lev.this, Game.class);
                 levelselect=levelselect*2;
                 intent.putExtra("levelNo", (Integer)levelselect);
+
                 startActivity(intent);
             }
 
