@@ -346,6 +346,7 @@ public class NavigationDrawer extends AppCompatActivity
 
     public  void closed()
     {
+        //HT724
         finish();
         android.os.Process.killProcess(android.os.Process.myPid());
         super.onDestroy();

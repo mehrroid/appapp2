@@ -344,7 +344,7 @@ public class Game extends Activity {
 
 		//button.setText("\uf04d");
 
-		button.setText(R.string.icon_cloud);
+		button.setText(icon);
 		button.setBackgroundResource(R.drawable.square);
 
 		//textView.setText("Hi");
