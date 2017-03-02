@@ -26,6 +26,17 @@ public class Splash_Screen extends Activity {
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
         txtLoading.setTypeface(font);
         caller();
+
+        try {
+            Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>try in");
+            SharedPre sp = new SharedPre(getApplicationContext());
+           int stars = Integer.parseInt(sp.Get("stars").toString());
+            Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+stars);
+            if (stars==400400400) {stars=0;}
+        }catch(NumberFormatException nfe)
+        {
+
+        }
     }
     private  void  caller()
     {

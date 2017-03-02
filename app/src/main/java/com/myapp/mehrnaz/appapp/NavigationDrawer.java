@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -31,11 +32,13 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 import static android.R.attr.fragment;
+import static com.google.android.gms.ads.AdSize.SMART_BANNER;
 
 // This is mainpage
 public class NavigationDrawer extends AppCompatActivity
@@ -75,10 +78,22 @@ public class NavigationDrawer extends AppCompatActivity
 //        View contentHamburger=findViewById(R.id.content_hamburger);
         //HT adsMob(banner) section start
         mAdView = (AdView) findViewById(R.id.adView);
+
         AdRequest adRequest = new AdRequest.Builder().build();
+
         mAdView.loadAd(adRequest);
         TextView txtg= (TextView) findViewById(R.id.game);
-
+        SharedPre sp = new SharedPre(getApplicationContext());
+        int starsin;
+        try {
+            starsin=Integer.parseInt(sp.Get("stars").toString());
+            Log.e("sp.Get(stars)", starsin+"");
+        } catch(NumberFormatException nfe) {
+            //	System.out.println("Could not parse " + nfe);
+            starsin=0;
+        }
+        TextView tv1 = (TextView)findViewById(R.id.starsNo);
+        tv1.setText(Integer.toString(starsin));
         //HT adsMob section end
 //
 //        if (toolbar != null) {

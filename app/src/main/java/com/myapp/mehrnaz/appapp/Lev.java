@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
@@ -28,6 +29,8 @@ public class Lev extends Activity {
     private String vGatTag;
     InterstitialAd mInterstitialAd;
     private AdView mAdView;
+    private int starsin;;
+    private SharedPre sp;;
 
     //az icon play baraye mosalasha estfade shode
 
@@ -40,7 +43,17 @@ public class Lev extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level);
         container = (android.widget.LinearLayout) findViewById(R.id.activity_main);
+        sp = new SharedPre(getApplicationContext());
 
+        try {
+            starsin=Integer.parseInt(sp.Get("stars").toString());
+            Log.e("sp.Get(stars)", starsin+"");
+        } catch(NumberFormatException nfe) {
+            //	System.out.println("Could not parse " + nfe);
+            starsin=0;
+        }
+        TextView tv1 = (TextView)findViewById(R.id.starsNo);
+        tv1.setText(Integer.toString(starsin));
 
         Typeface font2 = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 //items of header
@@ -58,18 +71,20 @@ public class Lev extends Activity {
 
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
+
         mAdView.loadAd(adRequest);
         draw(getResources().getStringArray(R.array.type), 3);
 
         //HT 748
-        int winStars= getIntent().getIntExtra("winStars", 0);
-        Log.i("response", "winStars:"+winStars);
+        int winStars= getIntent().getIntExtra("Stars", 0);
         if (winStars!=0)
         {
+
             CharSequence text = "You Win , " + winStars + " Stars";
             Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
             toast.show();
-            onCreate(Bundle.EMPTY);
+
+
         }
 
         //full screen adsMob start
@@ -200,35 +215,21 @@ public class Lev extends Activity {
                 break;
 
         }
-            int stars=0;
-            int levelNo=0;
-            try {
-                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>try in");
-                SharedPre sp = new SharedPre(getApplicationContext());
-                stars = Integer.parseInt(sp.Get("stars").toString());
-                levelNo = Integer.parseInt(sp.Get("levelNo").toString());
-                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+stars);
-                Log.d("Response: ", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GET"+ levelNo);
-                if (levelNo==400400400) {levelNo=1;}
-                if (stars==400400400) {stars=0;}
-            }catch(NumberFormatException nfe)
-            {
-
-            }
-
-            /*
-            if ((stars>2 && levelselect ==levelNo-1) || levelselect==1 )
+            
+            if (starsin>2 || levelselect==1 )
             {
                 if (levelselect!=1)
                 {
-                    sp.Set("stars",Integer.toString(stars-2));
+                    starsin=starsin-2;
+                    sp.Set("stars",Integer.toString(starsin));
 
                 }
                 Intent intent = new Intent(Lev.this, Game.class);
                 levelselect=levelselect*2;
                 intent.putExtra("levelNo", (Integer)levelselect);
                 startActivity(intent);
-            }*/
+            }
+                /*
             if(true)
             {
                 Intent intent = new Intent(Lev.this, Game.class);
@@ -237,7 +238,7 @@ public class Lev extends Activity {
 
                 startActivity(intent);
             }
-
+ */
         }
     }
 
@@ -247,5 +248,10 @@ public class Lev extends Activity {
                 .build();
 
         mInterstitialAd.loadAd(adRequest);
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Lev.this, NavigationDrawer.class);
+        startActivity(intent);
     }
 }

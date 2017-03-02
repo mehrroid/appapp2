@@ -21,6 +21,7 @@ import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import android.app.Activity;
 import android.content.Context;
@@ -45,6 +46,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
+
+import static com.myapp.mehrnaz.appapp.R.id.adView;
 
 
 public class Game extends Activity {
@@ -73,6 +76,7 @@ public class Game extends Activity {
 	int levelNo;
 	int icon;
 	int sizeIcon;
+	private int starsin;
 
 	//H>T added End
 	
@@ -99,9 +103,19 @@ public class Game extends Activity {
         font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
         levelNo = getIntent().getIntExtra("levelNo", 0);
 		Log.i("loadCards()","levelNo=" + levelNo);
+
         mainTable = (TableLayout)findViewById(R.id.TableLayout03);
         context  = mainTable.getContext();
 		sp = new SharedPre(getApplicationContext());
+		try {
+			starsin=Integer.parseInt(sp.Get("stars").toString());
+			Log.e("sp.Get(stars)", starsin+"");
+		} catch(NumberFormatException nfe) {
+			//	System.out.println("Could not parse " + nfe);
+			starsin=0;
+		}
+		TextView tv1 = (TextView)findViewById(R.id.starsNo);
+		tv1.setText(Integer.toString(starsin));
         newGame(levelNo);
 
 
@@ -210,7 +224,8 @@ public class Game extends Activity {
 		rtrn = rndm.Fisher3(CCount);
 		Log.i("newGame()","COL_COUNT=" +rtrn);
 		cards = new int [COL_COUNT] [ROW_COUNT];
-		mAdView = (AdView) findViewById(R.id.adView);
+		mAdView = (AdView) findViewById(adView);
+
 		AdRequest adRequest = new AdRequest.Builder().build();
 		mAdView.loadAd(adRequest);
 
@@ -375,7 +390,7 @@ public class Game extends Activity {
 					"]["+(y)+"]=" + cards[x][y]);
 			Typeface fontawsome = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 			button.setTypeface(fontawsome);
-			button.setTextColor(Color.YELLOW);
+			button.setTextColor(Color.parseColor("#f6bb07"));
 			String s = Character.toString((char) cards[x][y]);
 			button.setText(s);
 			button.setTextSize(TypedValue.COMPLEX_UNIT_PX, sizeIcon);
@@ -434,14 +449,27 @@ public class Game extends Activity {
     				seconedCard.button.setVisibility(View.INVISIBLE);
 					winCard +=1;
 					Log.e("checkCards()", winCard+"");
+					int starsin;
 					if (winCard==size/2)
 					{
-						Log.e("checkCards()", "in if");
-						//gets
-						CharSequence text = "You Win " + getStar() + " Star";
-						Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
-						toast.show();
-						onCreate(Bundle.EMPTY);
+
+						try {
+							starsin=Integer.parseInt(sp.Get("stars").toString());
+							Log.e("sp.Get(stars)", starsin+"");
+							starsin=starsin+getStar();
+						} catch(NumberFormatException nfe) {
+						//	System.out.println("Could not parse " + nfe);
+							starsin=getStar();
+						}
+						TextView tv1 = (TextView)findViewById(R.id.starsNo);
+						tv1.setText(Integer.toString(starsin));
+						sp.Set("stars",Integer.toString(starsin));
+
+						Intent intent = new Intent(Game.this, Lev.class);
+						intent.putExtra("stars", (Integer)getStar());
+						startActivity(intent);
+
+
 					}
 
     			}

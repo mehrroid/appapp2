@@ -56,20 +56,20 @@ android:layout_gravity="left"
       android:layout_gravity="right"
       android:gravity="right"
       android:layout_marginRight="@dimen/_100sdp"
-      android:textColor="@color/colorIcons"
+      android:textColor="@color/colorStars"
       android:layout_marginTop="@dimen/_15sdp"
       android:layout_marginBottom="@dimen/_5sdp"/>
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="3"
-      android:id="@+id/num"
+      android:text="0"
+      android:id="@+id/starsNo"
 
       android:textSize="@dimen/_16sdp"
       android:layout_gravity="right"
       android:gravity="right"
       android:layout_marginRight="@dimen/_80sdp"
-      android:textColor="@color/colorIcons"
+      android:textColor="@color/colorStars"
       android:layout_marginTop="@dimen/_15sdp"
       android:layout_marginBottom="@dimen/_5sdp"/>
   <TextView
@@ -82,7 +82,7 @@ android:layout_gravity="left"
       android:layout_gravity="right"
       android:gravity="right"
       android:layout_marginRight="@dimen/_30sdp"
-      android:textColor="@color/colorIcons"
-      android:layout_marginTop="@dimen/_18sdp"
+      android:textColor="@color/colorStars"
+      android:layout_marginTop="@dimen/_25sdp"
       android:layout_marginBottom="@dimen/_5sdp"/>
 </FrameLayout>
